@@ -23,3 +23,6 @@ Pi App Studio reserved all the rights! This code can be used for individual educ
  1. Minimum SDK: Android API 24 & Above
  2. Orientation: Portrait
  3. Target device: Android mobile & tablets
+
+
+JUST TO TEST
