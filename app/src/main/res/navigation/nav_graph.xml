@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.piappstudio.travelinsurance.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.piappstudio.travelinsurance.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.piappstudio.travelinsurance.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.piappstudio.travelinsurance.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_vehicleListFragment"
+            app:destination="@id/vehicleListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_vehicleDetailFragment"
+            app:destination="@id/vehicleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleListFragment"
+        android:name="com.piappstudio.travelinsurance.VehicleListFragment"
+        android:label="fragment_vehicle_list"
+        tools:layout="@layout/fragment_vehicle_list" >
+        <action
+            android:id="@+id/action_vehicleListFragment_to_vehicleDetailFragment"
+            app:destination="@id/vehicleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleDetailFragment"
+        android:name="com.piappstudio.travelinsurance.VehicleDetailFragment"
+        android:label="fragment_vehicle_detail"
+        tools:layout="@layout/fragment_vehicle_detail" >
+        <action
+            android:id="@+id/action_vehicleDetailFragment_to_insuranceFragment"
+            app:destination="@id/insuranceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceFragment"
+        android:name="com.piappstudio.travelinsurance.InsuranceFragment"
+        android:label="fragment_insurance"
+        tools:layout="@layout/fragment_insurance" >
+        <action
+            android:id="@+id/action_insuranceFragment_to_paymentOptionFragment"
+            app:destination="@id/paymentOptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentOptionFragment"
+        android:name="com.piappstudio.travelinsurance.PaymentOptionFragment"
+        android:label="fragment_payment_option"
+        tools:layout="@layout/fragment_payment_option" >
+        <action
+            android:id="@+id/action_paymentOptionFragment_to_paymentConfirmationFragment"
+            app:destination="@id/paymentConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentConfirmationFragment"
+        android:name="com.piappstudio.travelinsurance.PaymentConfirmationFragment"
+        android:label="fragment_payment_confirmation"
+        tools:layout="@layout/fragment_payment_confirmation" />
+</navigation>
