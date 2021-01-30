@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="m_20">20dp</dimen>
+    <dimen name="m_10">10dp</dimen>
+    <dimen name="m_150">150dp</dimen>
+    <dimen name="indicator_size">5dp</dimen>
+    <dimen name="m_16">16dp</dimen>
+    <dimen name="line_space">2</dimen>
+    <dimen name="m_100">100dp</dimen>
+    <dimen name="m_30">30dp</dimen>
+</resources>
