@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -15,6 +17,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 
     buildTypes {
@@ -35,6 +41,9 @@ android {
 dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    // For material design integration
+    implementation 'com.google.android.material:material:1.2.1'
+
     def nav_version = "2.3.2"
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

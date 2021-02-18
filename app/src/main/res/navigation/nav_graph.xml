@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.piappstudio.travelinsurance.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        android:label="@string/title_welcome"
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -20,8 +20,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.piappstudio.travelinsurance.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="@string/btn_sign_in"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -29,8 +29,8 @@
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.piappstudio.travelinsurance.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        android:label="@string/btn_register"
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
