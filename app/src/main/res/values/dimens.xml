@@ -8,4 +8,8 @@
     <dimen name="line_space">2</dimen>
     <dimen name="m_100">100dp</dimen>
     <dimen name="m_30">30dp</dimen>
+    <dimen name="m_80">80dp</dimen>
+
+    <dimen name="f_18">18sp</dimen>
+    <dimen name="f_20">20sp</dimen>
 </resources>

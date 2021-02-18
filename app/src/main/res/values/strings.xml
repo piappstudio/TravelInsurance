@@ -10,4 +10,12 @@
     <string name="feature_description">Slider Image</string>
     <string name="offer_bike_title">Motorcycle Insurance</string>
     <string name="offer_bike_desc">10% Hot Offer!</string>
+    <string name="msg_username">Enter Username/Email Address</string>
+    <string name="msg_password">Enter Password</string>
+    <string name="msg_enable_fingerprint">Enable Fingerprint</string>
+    
+    <string name="msg_error_user_name">Please enter valid username</string>
+    <string name="msg_error_password">Please enter valid password</string>
+    <string name="msg_error_password_regex">At least 8 character with 1 digital, upper,lower &amp; special char </string>
+    <string name="empty"> </string>
 </resources>
