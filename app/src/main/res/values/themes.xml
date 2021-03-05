@@ -25,8 +25,14 @@
     </style>
     <style name="h1">
         <item name="android:textSize">30sp</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
     <style name="PD_Description">
         <item name="android:textSize">20sp</item>
+    </style>
+    <style name="tiEitText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="android:textSize">@dimen/f_20</item>
+        
     </style>
 </resources>
