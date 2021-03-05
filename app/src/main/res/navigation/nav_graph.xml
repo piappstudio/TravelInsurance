@@ -28,8 +28,8 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.piappstudio.travelinsurance.RegistrationFragment"
-        android:label="@string/btn_register"
+        android:name="com.piappstudio.travelinsurance.register.RegistrationFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_homeFragment"

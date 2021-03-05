@@ -33,6 +33,9 @@
     <style name="tiEitText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/colorSecondary</item>
         <item name="android:textSize">@dimen/f_20</item>
-        
+        <item name="singleLine">true</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="errorEnabled">true</item>
+        <item name="endIconMode">clear_text</item>
     </style>
 </resources>

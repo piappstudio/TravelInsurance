@@ -15,4 +15,5 @@ object BinderUtil {
             textInputLayout.error = TIApplication.INSTANCE?.getString(error)
         }
     }
+    val PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$".toRegex()
 }

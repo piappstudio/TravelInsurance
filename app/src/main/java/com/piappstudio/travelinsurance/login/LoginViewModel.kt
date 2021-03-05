@@ -11,7 +11,7 @@ import com.piappstudio.travelinsurance.mbo.User
 class LoginViewModel: ViewModel() {
 
     val TAG = LoginViewModel::class.java.name
-    private  val _liveUser = MutableLiveData<User>(User("", ""))
+    private  val _liveUser = MutableLiveData<User>(User())
     val liveUser:LiveData<User> = _liveUser
 
     private val _errorUser:MutableLiveData<Int> = MutableLiveData(R.string.empty)
@@ -22,7 +22,7 @@ class LoginViewModel: ViewModel() {
 
 
     fun onClickLogin():Boolean {
-        Log.d(TAG, "is Checked ${isFingerPrintEnabled.get()}")
+//        Log.d(TAG, "is Checked ${isFingerPrintEnabled.get()}")
         var isValid = true
         if (liveUser.value?.userName.isNullOrEmpty()) {
             _errorUser.postValue(R.string.msg_error_user_name)
