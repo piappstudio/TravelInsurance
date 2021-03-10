@@ -23,7 +23,6 @@ import com.piappstudio.travelinsurance.util.BinderUtil
 
 class RegistrationViewModel: ViewModel() {
 
-
     private val _liveUserData = MutableLiveData<User>(User())
     val liveUser:LiveData<User> = _liveUserData
 

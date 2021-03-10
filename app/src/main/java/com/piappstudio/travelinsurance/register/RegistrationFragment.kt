@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,8 +14,6 @@ import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RegistrationFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class RegistrationFragment : Fragment() {
 
@@ -31,7 +28,7 @@ class RegistrationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val registerBinding = FragmentRegistrationBinding.inflate(inflater, container, false)
         registerBinding.registerModel = registerViewModel
         registerBinding.lifecycleOwner = this
@@ -39,20 +36,20 @@ class RegistrationFragment : Fragment() {
         return registerBinding.root
     }
 
-    fun initUI(registrationBinding: FragmentRegistrationBinding) {
+    private fun initUI(registrationBinding: FragmentRegistrationBinding) {
         registrationBinding.btnSignUp.setOnClickListener {
            navigateToDashboard(registrationBinding.etConfirmPassword.text.toString())
         }
 
-        registrationBinding.etConfirmPassword.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+        registrationBinding.etConfirmPassword.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 navigateToDashboard(v.text.toString())
                 true
             } else false
-        })
+        }
     }
 
-    fun navigateToDashboard(confirmPassword:String) {
+    private fun navigateToDashboard(confirmPassword:String) {
         if (registerViewModel.isValidInput(confirmPassword)) {
             findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
         }
