@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.piappstudio.travelinsurance.R
+import com.piappstudio.travelinsurance.common.TIApplication
+import com.piappstudio.travelinsurance.common.TIBaseActivity
 import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
+import com.piappstudio.travelinsurance.util.Resource
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -17,7 +22,7 @@ import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private val viewModel by lazy {
-        ViewModelProvider(this).get(LoginViewModel::class.java)
+        LoginViewModel(TIApplication.INSTANCE!!.repository)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +32,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentLogin = FragmentLoginBinding.inflate(inflater, container, false)
         fragmentLogin.viewModel = viewModel
         fragmentLogin.lifecycleOwner = this
@@ -36,11 +41,24 @@ class LoginFragment : Fragment() {
         return fragmentLogin.root
     }
 
-    fun initUI(fragmentLogin: FragmentLoginBinding) {
+    private fun initUI(fragmentLogin: FragmentLoginBinding) {
         fragmentLogin.btnSignIn.setOnClickListener {
-            if(viewModel.onClickLogin()) {
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-            }
+          viewModel.onClickLogin()
         }
+
+        viewModel.isShowProgressBar.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                (activity as TIBaseActivity).showProgressDialog("Login")
+            } else {
+                (activity as TIBaseActivity).dismissProgressDialog("Login")
+            }
+        })
+
+        viewModel.isLoginSuccessful.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                viewModel.resetLoginSuccessful(false)
+            }
+        })
     }
 }

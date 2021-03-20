@@ -13,9 +13,29 @@
     <string name="msg_username">Enter Username/Email Address</string>
     <string name="msg_password">Enter Password</string>
     <string name="msg_enable_fingerprint">Enable Fingerprint</string>
-    
+
     <string name="msg_error_user_name">Please enter valid username</string>
     <string name="msg_error_password">Please enter valid password</string>
+    <string name="msg_error_firstName">Please enter first name</string>
+    <string name="msg_error_lastName">Please enter last name</string>
+    <string name="msg_error_mobileNumber">Please enter mobile number</string>
+    <string name="msg_error_email">Please enter email address</string>
+    <string name="msg_error_valid_email">Please enter valid email address</string>
+    <string name="msg_error_valid_mobileNumber">Please enter valid mobile number</string>
+    <string name="msg_error_confirmPassword">Please enter confirm password</string>
+    <string name="msg_error_passwordnotmatch">Password is not matching</string>
     <string name="msg_error_password_regex">At least 8 character with 1 digital, upper,lower &amp; special char </string>
+    <string name="msg_error_invalid_username_password">Invalid username or password</string>
+    <string name="msg_error_user_name_exist">User name is already exist</string>
+    <string name="msg_error_email_name_exist">Email is already exist</string>
     <string name="empty"> </string>
+    <string name="let_us_know_about_you">Let us know about you!</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="enter_user_name">Enter User Name</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+    <string name="travel_insurance">Travel Insurance</string>
 </resources>
