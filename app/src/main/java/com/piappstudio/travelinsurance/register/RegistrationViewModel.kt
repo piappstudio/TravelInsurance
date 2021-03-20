@@ -13,15 +13,17 @@
 
 package com.piappstudio.travelinsurance.register
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.piappstudio.travelinsurance.R
-import com.piappstudio.travelinsurance.mbo.User
-import com.piappstudio.travelinsurance.mbo.UserError
+import com.piappstudio.travelinsurance.model.mbo.User
+import com.piappstudio.travelinsurance.model.mbo.UserError
+import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.travelinsurance.util.BinderUtil
+import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.travelinsurance.util.toSHA256Hash
+import kotlinx.coroutines.launch
 
-class RegistrationViewModel: ViewModel() {
+class RegistrationViewModel (private  val repository: TravelRepository): ViewModel() {
 
     private val _liveUserData = MutableLiveData<User>(User())
     val liveUser:LiveData<User> = _liveUserData
@@ -29,7 +31,28 @@ class RegistrationViewModel: ViewModel() {
     private val _liveUserError = MutableLiveData<UserError>(UserError())
     val liveErrorUser:LiveData<UserError> = _liveUserError
 
-    fun isValidInput(confirmPassword:String):Boolean {
+    private val _isAllValidData = MutableLiveData<Boolean>(false)
+    val isAllValidData:LiveData<Boolean> = _isAllValidData
+
+    fun resetData(isValid:Boolean) {
+        _isAllValidData.postValue(isValid)
+    }
+
+    init {
+        Transformations.map(isAllValidData) { isValid ->
+            if (isValid) {
+                liveUser.value?.let {
+                    val userInfo = liveUser.value!!.copy(password = it.password.toSHA256Hash())
+                    viewModelScope.launch() {
+                        repository.doRegister(userInfo)
+                    }
+                }
+            }
+        }
+
+    }
+
+    fun validateForm(confirmPassword:String):Boolean {
 
         var isValid = true
         if (liveUser.value?.firstName.isNullOrEmpty()) {
@@ -80,6 +103,20 @@ class RegistrationViewModel: ViewModel() {
 
         if(isValid) {
             _liveUserError.postValue(UserError())
+            viewModelScope.launch {
+                val lstUsers = repository.findUserByUserName(liveUser.value!!.userName,
+                        liveUser.value!!.email)
+
+                if (lstUsers?.isNotEmpty() == true) {
+                    if (lstUsers.find { user -> user.email == liveUser.value!!.email } != null) {
+                        _liveUserError.postValue(UserError(emailError = R.string.msg_error_email_name_exist))
+                    } else {
+                        _liveUserError.postValue(UserError(userNameError = R.string.msg_error_user_name_exist))
+                    }
+                }
+                _isAllValidData.postValue(lstUsers?.isEmpty())
+            }
+
         }
 
         return isValid

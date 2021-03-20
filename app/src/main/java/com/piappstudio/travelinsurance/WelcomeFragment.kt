@@ -58,7 +58,7 @@ class WelcomeFragment : Fragment() {
 
         val pagerAdapter = ScreenSlidePagerAdapter(this, lstItem)
         vpIntro.adapter = pagerAdapter
-        TabLayoutMediator(into_tab_layout, vpIntro) { tab, position -> }.attach()
+        TabLayoutMediator(into_tab_layout, vpIntro) { _, _ -> }.attach()
 
         val btnSignIn = view.findViewById<Button>(R.id.btnSignIn)
         btnSignIn.setOnClickListener {

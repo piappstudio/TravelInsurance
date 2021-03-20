@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.piappstudio.travelinsurance.R
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
 
 
@@ -18,7 +19,7 @@ import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
 class RegistrationFragment : Fragment() {
 
     private val registerViewModel by lazy {
-        ViewModelProvider(this).get(RegistrationViewModel::class.java)
+        RegistrationViewModel(TIApplication.INSTANCE!!.repository)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,20 +39,25 @@ class RegistrationFragment : Fragment() {
 
     private fun initUI(registrationBinding: FragmentRegistrationBinding) {
         registrationBinding.btnSignUp.setOnClickListener {
-           navigateToDashboard(registrationBinding.etConfirmPassword.text.toString())
+           onRegisterClick(registrationBinding.etConfirmPassword.text.toString())
         }
 
         registrationBinding.etConfirmPassword.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                navigateToDashboard(v.text.toString())
+                onRegisterClick(v.text.toString())
                 true
             } else false
         }
+
+        registerViewModel.isAllValidData.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
+                registerViewModel.resetData(false)
+            }
+        })
     }
 
-    private fun navigateToDashboard(confirmPassword:String) {
-        if (registerViewModel.isValidInput(confirmPassword)) {
-            findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
-        }
+    private fun onRegisterClick(confirmPassword:String) {
+        registerViewModel.validateForm(confirmPassword)
     }
 }

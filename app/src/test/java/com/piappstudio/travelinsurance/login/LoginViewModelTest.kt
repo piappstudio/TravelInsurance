@@ -16,16 +16,12 @@ package com.piappstudio.travelinsurance.login
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.piappstudio.travelinsurance.R
-import com.piappstudio.travelinsurance.mbo.User
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.mock
 import junit.framework.Assert.assertEquals
-import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentCaptor
-import org.mockito.Mockito.times
-import org.mockito.Mockito.verify
 
 
 class LoginViewModelTest{
@@ -38,7 +34,7 @@ class LoginViewModelTest{
 
     @Before
     fun before() {
-        viewModel = LoginViewModel()
+        viewModel = LoginViewModel(TIApplication.INSTANCE!!.repository)
         viewModel.errorUser.observeForever(errorUserName)
         viewModel.errorPass.observeForever(errorPassword)
     }

@@ -11,7 +11,7 @@
  *
  */
 
-package com.piappstudio.travelinsurance.mbo
+package com.piappstudio.travelinsurance.model.mbo
 
 import com.piappstudio.travelinsurance.R
 

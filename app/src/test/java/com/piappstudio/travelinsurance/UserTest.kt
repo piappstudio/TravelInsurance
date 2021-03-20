@@ -11,8 +11,10 @@
  *
  */
 
-package com.piappstudio.travelinsurance.mbo
+package com.piappstudio.travelinsurance
 
+import com.piappstudio.travelinsurance.model.mbo.User
+import com.piappstudio.travelinsurance.util.toSHA256Hash
 import junit.framework.TestCase
 import org.junit.Test
 
@@ -20,9 +22,12 @@ class UserTest : TestCase() {
 
     @Test
     fun testUser() {
-        val user = User("piappstudio", "123456")
+        val user = User( userName = "piappstudio", password = "123456")
         assertEquals("piappstudio", user.userName)
         assertEquals("123456", user.password)
+        val hash = user.password.toSHA256Hash()
+        val hash2 = user.password.toSHA256Hash()
+        assert(hash != hash2)
     }
 
     fun testSecondaryConstructor() {
