@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,7 +12,6 @@ import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.common.TIBaseActivity
 import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
 import com.piappstudio.travelinsurance.util.Resource
-import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -46,18 +44,19 @@ class LoginFragment : Fragment() {
           viewModel.onClickLogin()
         }
 
-        viewModel.isShowProgressBar.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                (activity as TIBaseActivity).showProgressDialog("Login")
-            } else {
-                (activity as TIBaseActivity).dismissProgressDialog("Login")
-            }
-        })
+        viewModel.liveLoginFlow.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                Resource.Status.LOADING-> {
+                    (activity as TIBaseActivity).showProgressDialog("Login")
+                }
+                Resource.Status.SUCCESS-> {
+                    (activity as TIBaseActivity).dismissProgressDialog("Login")
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    viewModel.liveLoginFlow.postValue(Resource.Status.NONE)
 
-        viewModel.isLoginSuccessful.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                viewModel.resetLoginSuccessful(false)
+                } else -> {
+                    (activity as TIBaseActivity).dismissProgressDialog("Login")
+                }
             }
         })
     }

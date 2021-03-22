@@ -19,13 +19,9 @@ class LoginViewModel (private val repository: TravelRepository): ViewModel() {
     private val _errorPass:MutableLiveData<Int> = MutableLiveData(R.string.empty)
     val errorPass:LiveData<Int> = _errorPass
     val isFingerPrintEnabled = ObservableField<Boolean>(true)
-    private  val _isLoginSuccessful:MutableLiveData<Boolean> = MutableLiveData(false)
-    val isLoginSuccessful:LiveData<Boolean> = _isLoginSuccessful
 
-    val isShowProgressBar = MutableLiveData<Boolean>(false)
-    fun resetLoginSuccessful(result:Boolean) {
-        _isLoginSuccessful.postValue(result)
-    }
+    val liveLoginFlow = MutableLiveData<Resource.Status>(Resource.Status.NONE)
+
     fun onClickLogin():Boolean {
         var isValid = true
         if (liveUser.value?.userName.isNullOrEmpty()) {
@@ -47,15 +43,15 @@ class LoginViewModel (private val repository: TravelRepository): ViewModel() {
         }
 
         if (isValid) {
-            viewModelScope.launch {
-                isShowProgressBar.postValue(true)
+            viewModelScope.launch(IO) {
+                liveLoginFlow.postValue(Resource.Status.LOADING)
                 val user = repository.findByUserNamePassword(liveUser.value!!.userName,
                         liveUser.value!!.password.toSHA256Hash())
-                isShowProgressBar.postValue(false)
                 if (user?.uid == null) {
                     _errorPass.postValue(R.string.msg_error_invalid_username_password)
+                    liveLoginFlow.postValue(Resource.Status.ERROR)
                 } else {
-                    _isLoginSuccessful.postValue(true)
+                    liveLoginFlow.postValue(Resource.Status.SUCCESS)
                 }
             }
         }
