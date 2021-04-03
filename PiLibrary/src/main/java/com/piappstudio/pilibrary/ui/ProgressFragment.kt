@@ -11,31 +11,30 @@
  *
  */
 
-package com.piappstudio.travelinsurance.common
+package com.piappstudio.pilibrary.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ProgressBar
 import androidx.fragment.app.DialogFragment
-import com.piappstudio.travelinsurance.R
-import kotlinx.android.synthetic.main.fragment_t_i_loader.*
+import androidx.fragment.app.Fragment
+import com.piappstudio.pilibrary.R
 
 /**
  * A simple [Fragment] subclass.
  * create an instance of this fragment.
  */
-class TILoaderFragment : DialogFragment() {
+class ProgressFragment : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val loaderView = inflater.inflate(R.layout.fragment_t_i_loader, container, false)
+        val loaderView = inflater.inflate(R.layout.fragment_progress, container, false)
         isCancelable = false
         loaderView.findViewById<ProgressBar>(R.id.commonProgressBar).visibility = View.VISIBLE
         return loaderView

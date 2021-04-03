@@ -43,6 +43,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // For material design integration
     implementation 'com.google.android.material:material:1.2.1'
+    implementation project(path: ':PiLibrary')
 
     //LifeCycle
     def lifecycle_version = "2.3.0"

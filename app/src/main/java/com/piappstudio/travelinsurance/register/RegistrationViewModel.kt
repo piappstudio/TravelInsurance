@@ -19,10 +19,8 @@ import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.UserError
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.travelinsurance.util.BinderUtil
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.util.toSHA256Hash
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 

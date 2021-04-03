@@ -9,9 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
-import com.piappstudio.travelinsurance.common.TIBaseActivity
 import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
 
 /**
  * A simple [Fragment] subclass.

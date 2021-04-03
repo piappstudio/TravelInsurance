@@ -1,7 +1,6 @@
 package com.piappstudio.travelinsurance.register
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,11 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.piappstudio.pilibrary.ui.BaseActivity
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
-import com.piappstudio.travelinsurance.common.TIBaseActivity
 import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
 
 
 /**
@@ -55,14 +54,14 @@ class RegistrationFragment : Fragment() {
         registerViewModel.liveRegistrationFlow.observe(viewLifecycleOwner, Observer {
             when (it) {
                 Resource.Status.LOADING-> {
-                    (activity as TIBaseActivity).showProgressDialog("Registration")
+                    (activity as BaseActivity).showProgressDialog("Registration")
                 }
                 Resource.Status.SUCCESS -> {
-                    (activity as TIBaseActivity).dismissProgressDialog("Registration")
+                    (activity as BaseActivity).dismissProgressDialog("Registration")
                     findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
                     registerViewModel.liveRegistrationFlow.postValue(Resource.Status.NONE)
                 } else -> {
-                    (activity as TIBaseActivity).dismissProgressDialog("Registration")
+                    (activity as BaseActivity).dismissProgressDialog("Registration")
                 }
             }
 

@@ -11,14 +11,14 @@
  *
  */
 
-package com.piappstudio.travelinsurance.common
+package com.piappstudio.pilibrary.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 
-open class TIBaseActivity :AppCompatActivity() {
+open class BaseActivity :AppCompatActivity() {
 
-    var mLoaderFragment:TILoaderFragment? = null
+    private var mLoaderFragment:ProgressFragment? = null
 
     fun showProgressDialog(tag:String) {
         val curr = supportFragmentManager.findFragmentByTag(tag)
@@ -29,7 +29,7 @@ open class TIBaseActivity :AppCompatActivity() {
             transaction.remove(it)
             transaction.commit()
         }
-        mLoaderFragment = TILoaderFragment()
+        mLoaderFragment = ProgressFragment()
         mLoaderFragment?.isCancelable = false
 
         val transaction = supportFragmentManager.beginTransaction()

@@ -1,12 +1,12 @@
 package com.piappstudio.travelinsurance
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.piappstudio.travelinsurance.common.TIBaseActivity
+import com.piappstudio.pilibrary.ui.BaseActivity
 
-class MainActivity : TIBaseActivity() {
+class MainActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

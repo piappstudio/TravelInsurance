@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.util.toSHA256Hash
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
