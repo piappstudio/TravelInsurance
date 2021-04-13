@@ -43,8 +43,8 @@ class LoginViewModel (private val repository: TravelRepository): ViewModel() {
         }
 
         if (isValid) {
+            liveLoginFlow.value = Resource.Status.LOADING
             viewModelScope.launch(IO) {
-                liveLoginFlow.postValue(Resource.Status.LOADING)
                 val user = repository.findByUserNamePassword(liveUser.value!!.userName,
                         liveUser.value!!.password.toSHA256Hash())
                 if (user?.uid == null) {

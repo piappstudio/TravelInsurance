@@ -13,11 +13,13 @@
 
 package com.piappstudio.travelinsurance.common
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 
 open class TIBaseActivity :AppCompatActivity() {
 
+    val TAG = TIBaseActivity::class.java.name
     var mLoaderFragment:TILoaderFragment? = null
 
     fun showProgressDialog(tag:String) {
@@ -40,6 +42,7 @@ open class TIBaseActivity :AppCompatActivity() {
     fun dismissProgressDialog(tag: String) {
         mLoaderFragment?.let {
             if (it.isVisible) {
+                Log.d(TAG, "Dismiss progress bar")
                 it.dismissAllowingStateLoss()
             }
         }
