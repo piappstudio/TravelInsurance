@@ -102,7 +102,6 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
                     val userInfo = liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
                     repository.doRegister(userInfo)
                     liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
-
                 }
             }
 

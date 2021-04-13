@@ -38,4 +38,8 @@
     <string name="enter_password">Enter Password</string>
     <string name="enter_confirm_password">Enter Confirm Password</string>
     <string name="travel_insurance">Travel Insurance</string>
+    <string name="home_hey_welcome">Hey Welcome!</string>
+    <string name="home_how_we_can_help_you_today">How can we help you today?</string>
+    <string name="home_i_m_leaving_another_policy">I\'m leaving another policy</string>
+    <string name="home_better_rate">I\'m insured, but I want a better rate</string>
 </resources>

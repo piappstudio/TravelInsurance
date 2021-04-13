@@ -11,13 +11,14 @@
  *
  */
 
-package com.piappstudio.pilibrary.ui
+package com.piappstudio.travelinsurance.common
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 
-open class BaseActivity :AppCompatActivity() {
+open class TIBaseActivity :AppCompatActivity() {
 
+    val TAG = TIBaseActivity::class.java.name
     private var mLoaderFragment:ProgressFragment? = null
 
     fun showProgressDialog(tag:String) {
@@ -40,6 +41,7 @@ open class BaseActivity :AppCompatActivity() {
     fun dismissProgressDialog(tag: String) {
         mLoaderFragment?.let {
             if (it.isVisible) {
+                Log.d(TAG, "Dismiss progress bar")
                 it.dismissAllowingStateLoss()
             }
         }

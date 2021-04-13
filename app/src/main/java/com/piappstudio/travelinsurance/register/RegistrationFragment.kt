@@ -59,7 +59,6 @@ class RegistrationFragment : Fragment() {
                 Resource.Status.SUCCESS -> {
                     (activity as BaseActivity).dismissProgressDialog("Registration")
                     findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
-                    registerViewModel.liveRegistrationFlow.postValue(Resource.Status.NONE)
                 } else -> {
                     (activity as BaseActivity).dismissProgressDialog("Registration")
                 }

@@ -1,6 +1,7 @@
 package com.piappstudio.travelinsurance.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.piappstudio.pilibrary.utility.Resource
  */
 class LoginFragment : Fragment() {
 
+    val TAG = LoginFragment::class.java.name
     private val viewModel by lazy {
         LoginViewModel(TIApplication.INSTANCE!!.repository)
     }
@@ -44,6 +46,7 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.liveLoginFlow.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "value ${it.name}")
             when(it) {
                 Resource.Status.LOADING-> {
                     (activity as TIBaseActivity).showProgressDialog("Login")
@@ -51,8 +54,6 @@ class LoginFragment : Fragment() {
                 Resource.Status.SUCCESS-> {
                     (activity as TIBaseActivity).dismissProgressDialog("Login")
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    viewModel.liveLoginFlow.postValue(Resource.Status.NONE)
-
                 } else -> {
                     (activity as TIBaseActivity).dismissProgressDialog("Login")
                 }
