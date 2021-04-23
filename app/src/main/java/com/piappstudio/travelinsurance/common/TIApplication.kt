@@ -1,5 +1,6 @@
 package com.piappstudio.travelinsurance.common
 import android.app.Application
+import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
 
 class TIApplication:Application() {
@@ -13,5 +14,6 @@ class TIApplication:Application() {
     }
     companion object {
         var INSTANCE:TIApplication? = null
+        var currUser:User? = null
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
@@ -49,13 +50,13 @@ class LoginFragment : Fragment() {
             Log.d(TAG, "value ${it.name}")
             when(it) {
                 Resource.Status.LOADING-> {
-                    (activity as TIBaseActivity).showProgressDialog("Login")
+                    (activity as PIBaseActivity).showProgressDialog("Login")
                 }
                 Resource.Status.SUCCESS-> {
-                    (activity as TIBaseActivity).dismissProgressDialog("Login")
+                    (activity as PIBaseActivity).dismissProgressDialog("Login")
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 } else -> {
-                    (activity as TIBaseActivity).dismissProgressDialog("Login")
+                    (activity as PIBaseActivity).dismissProgressDialog("Login")
                 }
             }
         })

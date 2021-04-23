@@ -20,6 +20,7 @@ import com.piappstudio.travelinsurance.model.mbo.UserError
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.travelinsurance.util.BinderUtil
 import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -101,6 +102,7 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
                     liveRegistrationFlow.postValue(Resource.Status.LOADING)
                     val userInfo = liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
                     repository.doRegister(userInfo)
+                    TIApplication.currUser = userInfo
                     liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
                 }
             }

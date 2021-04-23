@@ -19,6 +19,10 @@ allprojects {
         google()
         jcenter()
     }
+
+}
+ext {
+    paging_version = "3.0.0-beta02"
 }
 
 task clean(type: Delete) {

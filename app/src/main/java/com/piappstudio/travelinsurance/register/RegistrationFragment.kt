@@ -8,7 +8,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.piappstudio.pilibrary.ui.BaseActivity
+import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
@@ -54,13 +54,13 @@ class RegistrationFragment : Fragment() {
         registerViewModel.liveRegistrationFlow.observe(viewLifecycleOwner, Observer {
             when (it) {
                 Resource.Status.LOADING-> {
-                    (activity as BaseActivity).showProgressDialog("Registration")
+                    (activity as PIBaseActivity).showProgressDialog("Registration")
                 }
                 Resource.Status.SUCCESS -> {
-                    (activity as BaseActivity).dismissProgressDialog("Registration")
+                    (activity as PIBaseActivity).dismissProgressDialog("Registration")
                     findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
                 } else -> {
-                    (activity as BaseActivity).dismissProgressDialog("Registration")
+                    (activity as PIBaseActivity).dismissProgressDialog("Registration")
                 }
             }
 

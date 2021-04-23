@@ -11,23 +11,25 @@
  *
  */
 
-package com.piappstudio.travelinsurance.common
+package com.piappstudio.pilibrary.ui
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 
-open class TIBaseActivity :AppCompatActivity() {
+open class PIBaseActivity :AppCompatActivity() {
 
-    val TAG = TIBaseActivity::class.java.name
-    private var mLoaderFragment:ProgressFragment? = null
+    val TAG = PIBaseActivity::class.java.name
+    private var mLoaderFragment: ProgressFragment? = null
 
     fun showProgressDialog(tag:String) {
+        Log.d(TAG, "Show progress bar")
         val curr = supportFragmentManager.findFragmentByTag(tag)
-        curr?.let {
-            val dialogFragment = it as? DialogFragment
+        if(curr!=null) {
+            val dialogFragment = curr as? DialogFragment
             dialogFragment?.dismiss()
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.remove(it)
+            transaction.remove(curr)
             transaction.commit()
         }
         mLoaderFragment = ProgressFragment()
@@ -40,10 +42,8 @@ open class TIBaseActivity :AppCompatActivity() {
 
     fun dismissProgressDialog(tag: String) {
         mLoaderFragment?.let {
-            if (it.isVisible) {
-                Log.d(TAG, "Dismiss progress bar")
-                it.dismissAllowingStateLoss()
-            }
+            Log.d(TAG, "Dismiss progress bar")
+            it.dismissAllowingStateLoss()
         }
     }
 }

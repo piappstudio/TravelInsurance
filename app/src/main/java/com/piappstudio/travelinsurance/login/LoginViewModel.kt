@@ -6,13 +6,14 @@ import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class LoginViewModel (private val repository: TravelRepository): ViewModel() {
 
-    private  val _liveUser = MutableLiveData<User>(User())
+    private  val _liveUser = MutableLiveData<User>(User(userName = "muruga", password = "Muruga@123"))
     val liveUser:LiveData<User> = _liveUser
     private val _errorUser:MutableLiveData<Int> = MutableLiveData(R.string.empty)
     val errorUser:LiveData<Int> = _errorUser
@@ -51,6 +52,7 @@ class LoginViewModel (private val repository: TravelRepository): ViewModel() {
                     _errorPass.postValue(R.string.msg_error_invalid_username_password)
                     liveLoginFlow.postValue(Resource.Status.ERROR)
                 } else {
+                    TIApplication.currUser = user
                     liveLoginFlow.postValue(Resource.Status.SUCCESS)
                 }
             }

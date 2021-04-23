@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.piappstudio.travelinsurance.HomeFragment"
+        android:name="com.piappstudio.travelinsurance.ui.home.HomeFragment"
         android:label="@string/empty"
         tools:layout="@layout/fragment_home">
         <action
@@ -55,25 +55,24 @@
     </fragment>
     <fragment
         android:id="@+id/vehicleListFragment"
-        android:name="com.piappstudio.travelinsurance.VehicleListFragment"
-        android:label="fragment_vehicle_list"
-        tools:layout="@layout/fragment_vehicle_list" >
+        android:name="com.piappstudio.travelinsurance.ui.vehicle.VehicleListFragment"
+        android:label="@string/title_vehicle_list"
+        tools:layout="@layout/fragment_vehicle_list">
         <action
             android:id="@+id/action_vehicleListFragment_to_vehicleDetailFragment"
             app:destination="@id/vehicleDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/vehicleDetailFragment"
-        android:name="com.piappstudio.travelinsurance.VehicleDetailFragment"
-        android:label="fragment_vehicle_detail"
-        tools:layout="@layout/fragment_vehicle_detail" >
+        android:name="com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragment"
+        tools:layout="@layout/fragment_vehicle_detail">
         <action
             android:id="@+id/action_vehicleDetailFragment_to_insuranceFragment"
             app:destination="@id/insuranceFragment" />
     </fragment>
     <fragment
         android:id="@+id/insuranceFragment"
-        android:name="com.piappstudio.travelinsurance.InsuranceFragment"
+        android:name="com.piappstudio.travelinsurance.ui.insurance.InsuranceFragment"
         android:label="fragment_insurance"
         tools:layout="@layout/fragment_insurance" >
         <action
