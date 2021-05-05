@@ -13,21 +13,35 @@
 
 package com.piappstudio.travelinsurance.model.repository
 
-import com.piappstudio.travelinsurance.model.dao.UserDao
+import androidx.paging.PagingSource
+import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.User
+import com.piappstudio.travelinsurance.model.mbo.Vehicle
 
-class TravelRepository(private val userDao: UserDao) {
+class TravelRepository(private val vehicleDao: VehicleDao) {
+
+    fun fetchVehicleList(query:String): PagingSource<Int, Vehicle> {
+        return vehicleDao.getAllVehicleList(query)
+    }
+
+    suspend fun fetchVehicles():List<Vehicle> {
+        return vehicleDao.getAllVehicles()
+    }
 
     suspend fun findUserByUserName(userName: String, email:String):  List<User>? {
-        return userDao.findUserByUserName(userName, email)
+        return vehicleDao.findUserByUserName(userName, email)
     }
 
     suspend fun findByUserNamePassword(userName:String, password:String):User? {
-        return userDao.findByUserNamePassword(userName, password)
+        return vehicleDao.findByUserNamePassword(userName, password)
     }
 
     suspend fun doRegister(user: User) {
-        userDao.insert(user)
+        vehicleDao.insert(user)
+    }
+
+    suspend fun addVehicle(vehicle: Vehicle) {
+        vehicleDao.insert(vehicle)
     }
 
 }

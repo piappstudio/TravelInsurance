@@ -5,27 +5,24 @@ import androidx.lifecycle.*
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class LoginViewModel (private val repository: TravelRepository): ViewModel() {
 
-    private  val _liveUser = MutableLiveData<User>(User())
+    private  val _liveUser = MutableLiveData<User>(User(userName = "muruga", password = "Muruga@123"))
     val liveUser:LiveData<User> = _liveUser
     private val _errorUser:MutableLiveData<Int> = MutableLiveData(R.string.empty)
     val errorUser:LiveData<Int> = _errorUser
     private val _errorPass:MutableLiveData<Int> = MutableLiveData(R.string.empty)
     val errorPass:LiveData<Int> = _errorPass
     val isFingerPrintEnabled = ObservableField<Boolean>(true)
-    private  val _isLoginSuccessful:MutableLiveData<Boolean> = MutableLiveData(false)
-    val isLoginSuccessful:LiveData<Boolean> = _isLoginSuccessful
 
-    val isShowProgressBar = MutableLiveData<Boolean>(false)
-    fun resetLoginSuccessful(result:Boolean) {
-        _isLoginSuccessful.postValue(result)
-    }
+    val liveLoginFlow = MutableLiveData<Resource.Status>(Resource.Status.NONE)
+
     fun onClickLogin():Boolean {
         var isValid = true
         if (liveUser.value?.userName.isNullOrEmpty()) {
@@ -47,15 +44,16 @@ class LoginViewModel (private val repository: TravelRepository): ViewModel() {
         }
 
         if (isValid) {
-            viewModelScope.launch {
-                isShowProgressBar.postValue(true)
+            liveLoginFlow.value = Resource.Status.LOADING
+            viewModelScope.launch(IO) {
                 val user = repository.findByUserNamePassword(liveUser.value!!.userName,
                         liveUser.value!!.password.toSHA256Hash())
-                isShowProgressBar.postValue(false)
                 if (user?.uid == null) {
                     _errorPass.postValue(R.string.msg_error_invalid_username_password)
+                    liveLoginFlow.postValue(Resource.Status.ERROR)
                 } else {
-                    _isLoginSuccessful.postValue(true)
+                    TIApplication.currUser = user
+                    liveLoginFlow.postValue(Resource.Status.SUCCESS)
                 }
             }
         }

@@ -86,15 +86,16 @@
                 app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
 
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSignIn"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btnSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/m_20"
-                android:padding="10dp"
-                app:layout_constraintTop_toBottomOf="@id/rbFingerPrint"
+                android:gravity="center"
                 android:text="@string/btn_sign_in"
-                />
+                android:layout_marginBottom="@dimen/m_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rbFingerPrint" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -19,8 +19,10 @@ import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.UserError
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.travelinsurance.util.BinderUtil
-import com.piappstudio.travelinsurance.util.Resource
+import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel (private  val repository: TravelRepository): ViewModel() {
@@ -31,26 +33,8 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
     private val _liveUserError = MutableLiveData<UserError>(UserError())
     val liveErrorUser:LiveData<UserError> = _liveUserError
 
-    private val _isAllValidData = MutableLiveData<Boolean>(false)
-    val isAllValidData:LiveData<Boolean> = _isAllValidData
-
-    fun resetData(isValid:Boolean) {
-        _isAllValidData.postValue(isValid)
-    }
-
-    init {
-        Transformations.map(isAllValidData) { isValid ->
-            if (isValid) {
-                liveUser.value?.let {
-                    val userInfo = liveUser.value!!.copy(password = it.password.toSHA256Hash())
-                    viewModelScope.launch() {
-                        repository.doRegister(userInfo)
-                    }
-                }
-            }
-        }
-
-    }
+    // Registration updates
+    val liveRegistrationFlow = MutableLiveData<Resource.Status>(Resource.Status.NONE)
 
     fun validateForm(confirmPassword:String):Boolean {
 
@@ -103,7 +87,7 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
 
         if(isValid) {
             _liveUserError.postValue(UserError())
-            viewModelScope.launch {
+            viewModelScope.launch(IO) {
                 val lstUsers = repository.findUserByUserName(liveUser.value!!.userName,
                         liveUser.value!!.email)
 
@@ -114,7 +98,13 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
                         _liveUserError.postValue(UserError(userNameError = R.string.msg_error_user_name_exist))
                     }
                 }
-                _isAllValidData.postValue(lstUsers?.isEmpty())
+                else if (lstUsers?.isEmpty() == true) {
+                    liveRegistrationFlow.postValue(Resource.Status.LOADING)
+                    val userInfo = liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
+                    repository.doRegister(userInfo)
+                    TIApplication.currUser = userInfo
+                    liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
+                }
             }
 
         }

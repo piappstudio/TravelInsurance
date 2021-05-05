@@ -1,19 +1,18 @@
 package com.piappstudio.travelinsurance.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
-import com.piappstudio.travelinsurance.common.TIBaseActivity
 import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
-import com.piappstudio.travelinsurance.util.Resource
-import java.util.*
+import com.piappstudio.pilibrary.utility.Resource
 
 /**
  * A simple [Fragment] subclass.
@@ -21,6 +20,7 @@ import java.util.*
  */
 class LoginFragment : Fragment() {
 
+    val TAG = LoginFragment::class.java.name
     private val viewModel by lazy {
         LoginViewModel(TIApplication.INSTANCE!!.repository)
     }
@@ -46,18 +46,18 @@ class LoginFragment : Fragment() {
           viewModel.onClickLogin()
         }
 
-        viewModel.isShowProgressBar.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                (activity as TIBaseActivity).showProgressDialog("Login")
-            } else {
-                (activity as TIBaseActivity).dismissProgressDialog("Login")
-            }
-        })
-
-        viewModel.isLoginSuccessful.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                viewModel.resetLoginSuccessful(false)
+        viewModel.liveLoginFlow.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "value ${it.name}")
+            when(it) {
+                Resource.Status.LOADING-> {
+                    (activity as PIBaseActivity).showProgressDialog("Login")
+                }
+                Resource.Status.SUCCESS-> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Login")
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                } else -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Login")
+                }
             }
         })
     }

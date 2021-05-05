@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.piappstudio.travelinsurance.WelcomeFragment"
-        android:label="@string/title_welcome"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
@@ -24,7 +24,10 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -33,13 +36,16 @@
         tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.piappstudio.travelinsurance.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:name="com.piappstudio.travelinsurance.ui.home.HomeFragment"
+        android:label="@string/empty"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_vehicleListFragment"
             app:destination="@id/vehicleListFragment" />
@@ -49,25 +55,24 @@
     </fragment>
     <fragment
         android:id="@+id/vehicleListFragment"
-        android:name="com.piappstudio.travelinsurance.VehicleListFragment"
-        android:label="fragment_vehicle_list"
-        tools:layout="@layout/fragment_vehicle_list" >
+        android:name="com.piappstudio.travelinsurance.ui.vehicle.VehicleListFragment"
+        android:label="@string/title_vehicle_list"
+        tools:layout="@layout/fragment_vehicle_list">
         <action
             android:id="@+id/action_vehicleListFragment_to_vehicleDetailFragment"
             app:destination="@id/vehicleDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/vehicleDetailFragment"
-        android:name="com.piappstudio.travelinsurance.VehicleDetailFragment"
-        android:label="fragment_vehicle_detail"
-        tools:layout="@layout/fragment_vehicle_detail" >
+        android:name="com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragment"
+        tools:layout="@layout/fragment_vehicle_detail">
         <action
             android:id="@+id/action_vehicleDetailFragment_to_insuranceFragment"
             app:destination="@id/insuranceFragment" />
     </fragment>
     <fragment
         android:id="@+id/insuranceFragment"
-        android:name="com.piappstudio.travelinsurance.InsuranceFragment"
+        android:name="com.piappstudio.travelinsurance.ui.insurance.InsuranceFragment"
         android:label="fragment_insurance"
         tools:layout="@layout/fragment_insurance" >
         <action

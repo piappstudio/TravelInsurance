@@ -13,11 +13,16 @@
 
 package com.piappstudio.travelinsurance.model.mbo
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class User (@PrimaryKey val uid:Int?=null, var firstName:String="", var lastName:String="",
                  var mobileNumber:String="", var userName: String="", var password: String ="",
-                 var email:String="") {
+                 var email:String=""): Parcelable {
+
+                     fun fullName() = "${firstName.capitalize()} ${lastName.capitalize()}"
 }

@@ -9,13 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
-import com.piappstudio.travelinsurance.slider.IntroInfo
-import com.piappstudio.travelinsurance.slider.ScreenSlidePagerAdapter
+import com.piappstudio.pilibrary.ui.slider.IntroInfo
+import com.piappstudio.pilibrary.ui.slider.ScreenSlidePagerAdapter
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [WelcomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class WelcomeFragment : Fragment() {
@@ -38,11 +36,15 @@ class WelcomeFragment : Fragment() {
         supportActivity?.supportActionBar?.show()
     }
     fun initData() {
-       lstItem.add(IntroInfo(R.drawable.ic_car, getString(R.string.offer_car_title),
-           getString(R.string.offer_car_desc)))
+       lstItem.add(
+           IntroInfo(R.drawable.ic_car, getString(R.string.offer_car_title),
+           getString(R.string.offer_car_desc))
+       )
 
-        lstItem.add(IntroInfo(R.drawable.ic_motorcycle, getString(R.string.offer_bike_title),
-           getString(R.string.offer_bike_desc)))
+        lstItem.add(
+            IntroInfo(R.drawable.ic_motorcycle, getString(R.string.offer_bike_title),
+           getString(R.string.offer_bike_desc))
+        )
     }
 
     override fun onCreateView(

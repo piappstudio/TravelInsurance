@@ -155,15 +155,17 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/m_20"
             android:padding="10dp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilConfirmPassword"
-            android:text="@string/btn_register" />
+            android:text="@string/btn_register"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

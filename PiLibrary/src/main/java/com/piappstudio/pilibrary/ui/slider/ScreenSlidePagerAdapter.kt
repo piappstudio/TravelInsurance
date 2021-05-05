@@ -7,10 +7,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.piappstudio.travelinsurance.slider
+package com.piappstudio.pilibrary.ui.slider
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.piappstudio.pilibrary.ui.slider.IntroInfo
 
 /**
  * To render the {IntroViewFragment} in view pages

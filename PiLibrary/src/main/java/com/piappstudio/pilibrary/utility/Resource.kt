@@ -11,7 +11,7 @@
  *
  */
 
-package com.piappstudio.travelinsurance.util
+package com.piappstudio.pilibrary.utility
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?){
 

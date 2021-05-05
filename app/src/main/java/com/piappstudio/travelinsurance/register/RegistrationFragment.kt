@@ -8,9 +8,11 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
+import com.piappstudio.pilibrary.utility.Resource
 
 
 /**
@@ -49,11 +51,19 @@ class RegistrationFragment : Fragment() {
             } else false
         }
 
-        registerViewModel.isAllValidData.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
-                registerViewModel.resetData(false)
+        registerViewModel.liveRegistrationFlow.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                Resource.Status.LOADING-> {
+                    (activity as PIBaseActivity).showProgressDialog("Registration")
+                }
+                Resource.Status.SUCCESS -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Registration")
+                    findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
+                } else -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Registration")
+                }
             }
+
         })
     }
 
