@@ -43,5 +43,8 @@ class TravelRepository(private val vehicleDao: VehicleDao) {
     suspend fun addVehicle(vehicle: Vehicle) {
         vehicleDao.insert(vehicle)
     }
+    suspend fun updateVehicle(vehicle: Vehicle) {
+        vehicleDao.updateVehicle(vehicle)
+    }
 
 }

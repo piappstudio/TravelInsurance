@@ -1,14 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".VehicleDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vehicleModel"
+            type="com.piappstudio.travelinsurance.ui.vehicle.VehicleViewModel" />
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/m_10">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/h1"
+                    android:text="@string/title_let_us_know_about_your_vehicle" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/dpTextInputLayout"
+                    android:layout_marginTop="@dimen/m_20"
+                    android:textColorHint="@color/black"
+                    android:hint="@string/select_type"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vType}"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <AutoCompleteTextView
+                        android:id="@+id/actVType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@={vehicleModel.currVehicleInfo.vType}"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVMake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/dpTextInputLayout"
+                    android:textColorHint="@color/black"
+                    android:hint="@string/select_make"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vMakeError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVType"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <AutoCompleteTextView
+                        android:id="@+id/actVMake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@={vehicleModel.currVehicleInfo.vMake}"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/dpTextInputLayout"
+                    android:hint="@string/select_model"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vModelError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVMake"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actModel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:labelFor="@string/select_model"
+                        android:text="@={vehicleModel.currVehicleInfo.vModel}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/dpTextInputLayout"
+                    android:hint="@string/v_select_year"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vYearError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVModel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <AutoCompleteTextView
+                        android:id="@+id/actYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="@={vehicleModel.currVehicleInfo.vYear}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/enter_vehicle_number"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vNumberError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVYear"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.vNumber}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVEngineNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/enter_enginer_number"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vEngineNumberError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVEngineNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.vEngineNumber}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVZip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/enter_zip_code"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.zipError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVEngineNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVZip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.zip}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVOwnerStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/select_owner_status"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.ownerStatusError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVZip"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVOwnerStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.ownerStatus}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/enter_usage_kilometers"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.vUsageError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVOwnerStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVUsage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.vUsage}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilVMillage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tiEitText"
+                    android:hint="@string/enter_yearly_millage"
+                    app:errorText="@{vehicleModel.errorVehicleInfo.annualMillageError}"
+                    app:layout_constraintTop_toBottomOf="@id/tilVUsage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etVMillage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={vehicleModel.currVehicleInfo.annualMillage}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/m_20"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tilVMillage"
+                    android:text="@string/btn_register" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

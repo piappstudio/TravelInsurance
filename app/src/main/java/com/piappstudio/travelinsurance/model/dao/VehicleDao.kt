@@ -14,10 +14,7 @@
 package com.piappstudio.travelinsurance.model.dao
 
 import androidx.paging.PagingSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 
@@ -48,4 +45,7 @@ interface VehicleDao {
 
     @Query("DELETE FROM Vehicle")
     suspend fun deleteAllVehicle()
+
+    @Update(entity = Vehicle::class)
+    suspend fun updateVehicle(vararg event: Vehicle)
 }

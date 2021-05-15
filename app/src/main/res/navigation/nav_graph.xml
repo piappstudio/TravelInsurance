@@ -65,6 +65,7 @@
     <fragment
         android:id="@+id/vehicleDetailFragment"
         android:name="com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_vehicle_detail">
         <action
             android:id="@+id/action_vehicleDetailFragment_to_insuranceFragment"

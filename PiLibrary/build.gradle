@@ -18,6 +18,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -27,9 +28,15 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        version = "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${archivesBaseName}-${variant.name}-${version}.aar"
+        }
     }
 
     buildFeatures {

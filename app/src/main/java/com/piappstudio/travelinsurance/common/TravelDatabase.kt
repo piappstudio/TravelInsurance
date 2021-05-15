@@ -17,13 +17,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 
-@Database(entities = [User::class, Vehicle::class], version = 2, exportSchema = false)
+@Database(entities = [User::class, Vehicle::class], version = 4, exportSchema = false)
 abstract class TravelDatabase : RoomDatabase() {
     abstract fun  userDao():VehicleDao
 

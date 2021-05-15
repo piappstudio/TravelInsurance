@@ -20,4 +20,4 @@ import androidx.room.PrimaryKey
 data class Vehicle(@PrimaryKey val uid:Int? = null, var vNumber:String="", var vYear:String="",
                    var vMake:String="",var vModel:String="",
                    var vEngineNumber:String="", var zip:String="", var ownerStatus:String="",
-                   var vUsage:String="", var annualMillage:String="")
+                   var vUsage:String="", var usageKilometers:String="", var annualMillage:String="", var vType:String="")
