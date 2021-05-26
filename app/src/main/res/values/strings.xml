@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_register">Register</string>
+    <string name="btn_register_update">Update</string>
     <string name="title_welcome">Travel Insurance</string>
     <string name="offer_car_title">Car Insurance</string>
     <string name="offer_car_desc">Insurance up to 60% off</string>

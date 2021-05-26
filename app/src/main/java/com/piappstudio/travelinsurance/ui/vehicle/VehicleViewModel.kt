@@ -35,6 +35,8 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
     var currVehicleInfo:MutableLiveData<Vehicle> = MutableLiveData()
     var autoInfo:List<AutoInfo>? = null
 
+    var mutIsUpdate:MutableLiveData<Boolean> = MutableLiveData(false)
+
     // For type
     private val _liveVehicleType:MutableLiveData<List<String>> = MutableLiveData()
     val liveVehicleType:LiveData<List<String>> = _liveVehicleType
@@ -50,11 +52,11 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
     private  val _mutErrorVehicleInfo = MutableLiveData(VehicleError())
     val errorVehicleInfo: LiveData<VehicleError> = _mutErrorVehicleInfo
 
-    fun getSearchResultStream(query:String):Flow<PagingData<Vehicle>> {
+    fun getSearchResultStream(query:String, userId:Long):Flow<PagingData<Vehicle>> {
         return Pager(
                 config = PagingConfig(10, 10, true,
                         10*3),
-                pagingSourceFactory = {repository.fetchVehicleList(query)}
+                pagingSourceFactory = {repository.fetchVehicleList(query, userId)}
         ).flow
     }
 
@@ -80,7 +82,7 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
 
     fun onSelectType(text:String) {
         if (text.isEmpty()) return
-        autoInfo?.first { it.name == text }?.models?.let {
+        autoInfo?.first { it.name == text }?.makes?.let {
             val lstMake = it.map { make -> make.title!! }
              _liveVehicleMake.postValue(lstMake)
             currVehicleInfo.postValue(currVehicleInfo.value?.also { vehicle ->
@@ -97,7 +99,7 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
 
     fun onSelectMake(text:String) {
         if (text.isEmpty()) return
-        autoInfo?.first{it.name == currVehicleInfo.value?.vType}?.models?.first{it.title == text}?.models?.let {
+        autoInfo?.first{it.name == currVehicleInfo.value?.vType}?.makes?.first{it.title == text}?.models?.let {
             val lstModel  = it.map { makeInfo -> makeInfo.title!! }
             _liveVehicleModel.postValue(lstModel)
             currVehicleInfo.postValue(currVehicleInfo.value?.also { vehicle ->
@@ -163,6 +165,7 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
                     repository.updateVehicle(currVehicleInfo.value!!)
                     println("Completed")
                 } else {
+                    currVehicleInfo.value?.userId = TIApplication.currUser?.uid?:0
                     repository.addVehicle(currVehicleInfo.value!!)
                     println("Added")
                 }

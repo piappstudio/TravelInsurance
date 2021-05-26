@@ -17,7 +17,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Vehicle(@PrimaryKey val uid:Int? = null, var vNumber:String="", var vYear:String="",
+data class Vehicle(@PrimaryKey val uid:Long? = null, var vNumber:String="", var vYear:String="",
                    var vMake:String="",var vModel:String="",
                    var vEngineNumber:String="", var zip:String="", var ownerStatus:String="",
-                   var vUsage:String="", var usageKilometers:String="", var annualMillage:String="", var vType:String="")
+                   var vUsage:String="", var usageKilometers:String="", var annualMillage:String="",
+                   var vType:String="", var userId:Long=0)

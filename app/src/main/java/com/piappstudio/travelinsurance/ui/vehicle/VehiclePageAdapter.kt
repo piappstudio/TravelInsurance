@@ -18,6 +18,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.OnItemClickListener
 import com.piappstudio.travelinsurance.databinding.ItemVehicleRowBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
@@ -50,6 +51,17 @@ class VehiclePageAdapter(val listener:OnItemClickListener<Vehicle>) : PagingData
             val vehicle = getItem(position)
             binding.vrTitle.text =  vehicle?.vMake+" "+vehicle?.vModel
             binding.vrDescription.text = vehicle?.vYear
+            when (vehicle?.vType) {
+                "Car"-> {
+                    binding.vrImage.setImageResource(R.drawable.ic_car)
+                }
+                "Two Wheeler"-> {
+                    binding.vrImage.setImageResource(R.drawable.ic_motorcycle)
+                }
+                "Commercial"-> {
+                    binding.vrImage.setImageResource(R.drawable.ic_ads)
+                }
+            }
         }
     }
 

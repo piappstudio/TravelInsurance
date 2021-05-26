@@ -21,7 +21,7 @@ import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 
-@Database(entities = [User::class, Vehicle::class], version = 4, exportSchema = false)
+@Database(entities = [User::class, Vehicle::class], version = 5, exportSchema = false)
 abstract class TravelDatabase : RoomDatabase() {
     abstract fun  userDao():VehicleDao
 

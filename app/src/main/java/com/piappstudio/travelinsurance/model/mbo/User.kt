@@ -20,7 +20,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity
-data class User (@PrimaryKey val uid:Int?=null, var firstName:String="", var lastName:String="",
+data class User (@PrimaryKey var uid:Long?=null, var firstName:String="", var lastName:String="",
                  var mobileNumber:String="", var userName: String="", var password: String ="",
                  var email:String=""): Parcelable {
 

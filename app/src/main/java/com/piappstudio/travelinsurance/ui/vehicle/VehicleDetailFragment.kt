@@ -18,14 +18,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.annotation.WorkerThread
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleDetailBinding
+import com.piappstudio.travelinsurance.model.mbo.Vehicle
 import com.piappstudio.travelinsurance.model.mbo.json.Auto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -63,6 +67,12 @@ class VehicleDetailFragment : Fragment() {
     fun setupUI() {
         binding.vehicleModel = viewModel
         binding.lifecycleOwner = this
+
+        val isNewVehicle = navArgs<VehicleDetailFragmentArgs>().value.isNew
+        viewModel.mutIsUpdate.postValue(isNewVehicle)
+        if (isNewVehicle) {
+            viewModel.currVehicleInfo = MutableLiveData(Vehicle())
+        }
         // Set the adapter when values gets changes
         viewModel.liveVehicleType.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.actVType.setAdapter(ArrayAdapter<String>(requireContext(), R.layout.list_popup_window_item, it))

@@ -18,10 +18,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavOptions
+import androidx.navigation.compose.navArgument
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentHomeBinding
+import com.piappstudio.travelinsurance.model.mbo.Vehicle
+import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragment
+import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragmentArgs
+import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragmentDirections
+import com.piappstudio.travelinsurance.ui.vehicle.VehicleViewModel
 
 
 /** * create an instance of this fragment.
@@ -43,6 +52,12 @@ class HomeFragment : Fragment() {
         }
         binding.btnInsured.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_vehicleListFragment)
+        }
+
+        binding.btnNewVehicle.setOnClickListener {
+
+            val action = HomeFragmentDirections.actionHomeFragmentToVehicleDetailFragment(true)
+            findNavController().navigate(action)
         }
         return binding.root
     }

@@ -28,20 +28,20 @@ interface VehicleDao {
     suspend fun findUserByUserName(userName: String, email:String):List<User>?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(user: User)
+    suspend fun insert(user: User):Long
 
     @Query("DELETE FROM user")
     suspend fun deleteAll()
 
 
-    @Query("SELECT * FROM VEHICLE WHERE vMake like '%'||:query||'%' OR vYear like '%'||:query||'%'")
-    fun getAllVehicleList(query:String): PagingSource<Int, Vehicle>
+    @Query("SELECT * FROM VEHICLE WHERE userId = :userId AND (vMake  like '%'||:query||'%' OR vYear like '%'||:query||'%')")
+    fun getAllVehicleList(query:String, userId:Long): PagingSource<Int, Vehicle>
 
     @Query("SELECT * FROM VEHICLE")
     suspend fun getAllVehicles(): List<Vehicle>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(vehicle: Vehicle)
+    suspend fun insert(vehicle: Vehicle):Long
 
     @Query("DELETE FROM Vehicle")
     suspend fun deleteAllVehicle()

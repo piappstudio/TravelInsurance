@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'jacoco'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -81,7 +83,7 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:1.1.1"
 
 
-    def nav_version = "2.3.3"
+
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

@@ -14,6 +14,8 @@
 package com.piappstudio.travelinsurance.model.mbo.json
 
 import android.content.Context
+import androidx.annotation.MainThread
+import androidx.annotation.WorkerThread
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -21,6 +23,7 @@ class Auto() {
     companion object {
 
         var autoInfo:List<AutoInfo>? = null
+
         fun readJsonFile(context: Context, fileName:String):String{
 
             val returnString = StringBuilder()
@@ -49,5 +52,5 @@ class Auto() {
 
 }
 
-data class AutoInfo(val name:String, val models:List<MakeInfo>)
+data class AutoInfo(val name:String, val makes:List<MakeInfo>)
 data class MakeInfo(val code:String?, val value:String?, val title:String?, val models:List<MakeInfo>)

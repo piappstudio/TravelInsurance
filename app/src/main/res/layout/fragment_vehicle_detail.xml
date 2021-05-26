@@ -162,7 +162,7 @@
                         android:id="@+id/etVZip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:text="@={vehicleModel.currVehicleInfo.zip}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -200,7 +200,7 @@
                         android:id="@+id/etVUsage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:text="@={vehicleModel.currVehicleInfo.vUsage}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,7 +219,7 @@
                         android:id="@+id/etVMillage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="numberDecimal"
                         android:text="@={vehicleModel.currVehicleInfo.annualMillage}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -233,7 +233,7 @@
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tilVMillage"
-                    android:text="@string/btn_register" />
+                    android:text="@{vehicleModel.mutIsUpdate?@string/btn_register:@string/btn_register_update}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

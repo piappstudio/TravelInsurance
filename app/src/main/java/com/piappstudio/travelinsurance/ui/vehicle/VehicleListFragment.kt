@@ -23,6 +23,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.OnItemClickListener
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleListBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 import kotlinx.coroutines.flow.collectLatest
@@ -86,15 +87,15 @@ class VehicleListFragment : Fragment() {
         binding.rvVehicleList.layoutManager = LinearLayoutManager(context)
         search(null)
         binding.btnAdd.setOnClickListener {
-            viewModel.currVehicleInfo = MutableLiveData(Vehicle())
-            findNavController().navigate(R.id.action_vehicleListFragment_to_vehicleDetailFragment)
+            val action = VehicleListFragmentDirections.actionVehicleListFragmentToVehicleDetailFragment(true)
+            findNavController().navigate(action)
 
         }
     }
 
     fun search(query:String?) {
         lifecycleScope.launch {
-            viewModel.getSearchResultStream(query?:"").collectLatest {
+            viewModel.getSearchResultStream(query?:"", TIApplication.currUser?.uid?:0).collectLatest {
                 adapter.submitData(it)
             }
         }
