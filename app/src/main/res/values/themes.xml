@@ -47,5 +47,19 @@
         <item name="android:imeOptions">actionNext</item>
         <item name="errorEnabled">true</item>
         <item name="endIconMode">clear_text</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="hintTextColor">@color/colorSecondary</item>
+    </style>
+    <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="dpTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="android:textSize">@dimen/f_20</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="hintTextColor">@color/colorSecondary</item>
     </style>
 </resources>

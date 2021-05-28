@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_register">Register</string>
+    <string name="btn_register_update">Update</string>
     <string name="title_welcome">Travel Insurance</string>
     <string name="offer_car_title">Car Insurance</string>
     <string name="offer_car_desc">Insurance up to 60% off</string>
@@ -45,4 +46,31 @@
     <string name="title_vehicle_list">Vehicle List</string>
     <string name="search_hint">Search vehicle</string>
     <string name="menu_search">Search</string>
+    <string name="title_let_us_know_about_your_vehicle">Vehicle Details</string>
+    <string name="car">Car</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="commercial">Commercial</string>
+    <string name="v_select_year">Select Year</string>
+    <string name="select_model">Select Model</string>
+    <string name="select_make">Select Make</string>
+    <string name="enter_vehicle_number">Enter Vehicle Number</string>
+    <string name="enter_zip_code">Enter zip code</string>
+    <string name="enter_enginer_number">Enter Engine Number</string>
+    <string name="select_owner_status">Select owner status</string>
+    <string name="enter_usage_kilometers">Enter Usage Kilometers</string>
+    <string name="enter_yearly_millage">Enter Yearly Millage</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="select_type">Select Type</string>
+
+    <!-- Error message -->
+    <string name="msg_error_selectType">Please select vehicle type</string>
+    <string name="msg_error_selectMake">Please select vehicle make</string>
+    <string name="msg_error_selectModel">Please select vehicle model</string>
+    <string name="msg_error_selectyear">Please select year</string>
+    <string name="msg_error_vehicle_number">Please enter vehicle number</string>
+    <string name="msg_error_engine_number">Please enter engine number</string>
+    <string name="msg_error_zip_code">Please enter zip code</string>
+    <string name="msg_error_owner_status">Please select owner status</string>
+    <string name="msg_error_kilo_meter">Please kilo kilometers</string>
+    <string name="msg_error_yearly_millage">Please enter yearly millage</string>
 </resources>

@@ -101,7 +101,7 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
                 else if (lstUsers?.isEmpty() == true) {
                     liveRegistrationFlow.postValue(Resource.Status.LOADING)
                     val userInfo = liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
-                    repository.doRegister(userInfo)
+                    userInfo.uid = repository.doRegister(userInfo)
                     TIApplication.currUser = userInfo
                     liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
                 }

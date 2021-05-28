@@ -20,8 +20,8 @@ import com.piappstudio.travelinsurance.model.mbo.Vehicle
 
 class TravelRepository(private val vehicleDao: VehicleDao) {
 
-    fun fetchVehicleList(query:String): PagingSource<Int, Vehicle> {
-        return vehicleDao.getAllVehicleList(query)
+    fun fetchVehicleList(query:String, userId:Long): PagingSource<Int, Vehicle> {
+        return vehicleDao.getAllVehicleList(query, userId)
     }
 
     suspend fun fetchVehicles():List<Vehicle> {
@@ -36,12 +36,15 @@ class TravelRepository(private val vehicleDao: VehicleDao) {
         return vehicleDao.findByUserNamePassword(userName, password)
     }
 
-    suspend fun doRegister(user: User) {
-        vehicleDao.insert(user)
+    suspend fun doRegister(user: User):Long {
+        return vehicleDao.insert(user)
     }
 
-    suspend fun addVehicle(vehicle: Vehicle) {
-        vehicleDao.insert(vehicle)
+    suspend fun addVehicle(vehicle: Vehicle):Long {
+        return vehicleDao.insert(vehicle)
+    }
+    suspend fun updateVehicle(vehicle: Vehicle) {
+        vehicleDao.updateVehicle(vehicle)
     }
 
 }

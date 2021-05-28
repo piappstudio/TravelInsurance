@@ -17,11 +17,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.OnItemClickListener
+import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleListBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 import kotlinx.coroutines.flow.collectLatest
@@ -38,7 +40,7 @@ class VehicleListFragment : Fragment() {
     private val adapter by lazy {
         VehiclePageAdapter(listener = object : OnItemClickListener<Vehicle> {
             override fun onClick(item: Vehicle?) {
-                viewModel.currVehicleInfo = item
+                viewModel.currVehicleInfo = MutableLiveData(item!!)
                 findNavController().navigate(R.id.action_vehicleListFragment_to_vehicleDetailFragment)
             }
         })
@@ -84,11 +86,16 @@ class VehicleListFragment : Fragment() {
         binding.rvVehicleList.adapter = adapter
         binding.rvVehicleList.layoutManager = LinearLayoutManager(context)
         search(null)
+        binding.btnAdd.setOnClickListener {
+            val action = VehicleListFragmentDirections.actionVehicleListFragmentToVehicleDetailFragment(true)
+            findNavController().navigate(action)
+
+        }
     }
 
     fun search(query:String?) {
         lifecycleScope.launch {
-            viewModel.getSearchResultStream(query?:"").collectLatest {
+            viewModel.getSearchResultStream(query?:"", TIApplication.currUser?.uid?:0).collectLatest {
                 adapter.submitData(it)
             }
         }

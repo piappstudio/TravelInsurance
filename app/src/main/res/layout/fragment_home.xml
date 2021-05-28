@@ -37,14 +37,14 @@
             android:layout_marginTop="@dimen/m_20" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnInsured"
+            android:id="@+id/btnNewVehicle"
             style="@style/outlineButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/m_20"
             android:layout_marginBottom="@dimen/m_30"
             android:padding="@dimen/m_20"
-            android:text="@string/home_better_rate"
+            android:text="Bought New Vehicle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"
@@ -59,13 +59,13 @@
             android:padding="@dimen/m_20"
             android:text="@string/home_better_rate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnInsured"
+            app:layout_constraintTop_toBottomOf="@id/btnNewVehicle"
             android:layout_marginBottom="@dimen/m_30"
             android:layout_marginEnd="@dimen/m_20"
             android:layout_marginTop="@dimen/m_10" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNewVehicle"
+            android:id="@+id/btnInsured"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/m_20"
