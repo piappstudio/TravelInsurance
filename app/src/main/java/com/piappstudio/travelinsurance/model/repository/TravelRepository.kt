@@ -17,8 +17,11 @@ import androidx.paging.PagingSource
 import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.User
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TravelRepository(private val vehicleDao: VehicleDao) {
+@Singleton
+class TravelRepository @Inject constructor(private val vehicleDao: VehicleDao) {
 
     fun fetchVehicleList(query:String, userId:Long): PagingSource<Int, Vehicle> {
         return vehicleDao.getAllVehicleList(query, userId)

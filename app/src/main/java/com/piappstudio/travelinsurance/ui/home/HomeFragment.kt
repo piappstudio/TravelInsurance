@@ -31,10 +31,12 @@ import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragment
 import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragmentArgs
 import com.piappstudio.travelinsurance.ui.vehicle.VehicleDetailFragmentDirections
 import com.piappstudio.travelinsurance.ui.vehicle.VehicleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /** * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding:FragmentHomeBinding? = null

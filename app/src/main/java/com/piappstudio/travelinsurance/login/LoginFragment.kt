@@ -6,24 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.piappstudio.pilibrary.ui.PIBaseActivity
-import com.piappstudio.travelinsurance.R
-import com.piappstudio.travelinsurance.common.TIApplication
-import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
 import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.R
+import com.piappstudio.travelinsurance.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
  * create an instance of this fragment.
  */
+
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     val TAG = LoginFragment::class.java.name
-    private val viewModel by lazy {
-        LoginViewModel(TIApplication.INSTANCE!!.repository)
-    }
+    private val viewModel:LoginViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)

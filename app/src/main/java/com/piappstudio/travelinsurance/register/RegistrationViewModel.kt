@@ -22,10 +22,13 @@ import com.piappstudio.travelinsurance.util.BinderUtil
 import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegistrationViewModel (private  val repository: TravelRepository): ViewModel() {
+@HiltViewModel
+class RegistrationViewModel @Inject constructor (private  val repository: TravelRepository): ViewModel() {
 
     private val _liveUserData = MutableLiveData<User>(User())
     val liveUser:LiveData<User> = _liveUserData
@@ -110,5 +113,9 @@ class RegistrationViewModel (private  val repository: TravelRepository): ViewMod
         }
 
         return isValid
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }
