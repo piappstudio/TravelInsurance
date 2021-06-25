@@ -8,10 +8,13 @@ import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.util.toSHA256Hash
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel (private val repository: TravelRepository): ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: TravelRepository): ViewModel() {
 
     private  val _liveUser = MutableLiveData<User>(User(userName = "muruga", password = "Muruga@123"))
     val liveUser:LiveData<User> = _liveUser

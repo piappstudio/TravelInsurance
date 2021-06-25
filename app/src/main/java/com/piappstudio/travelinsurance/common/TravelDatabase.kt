@@ -13,9 +13,7 @@
 
 package com.piappstudio.travelinsurance.common
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.User
@@ -32,16 +30,5 @@ abstract class TravelDatabase : RoomDatabase() {
             }
         }
 */
-        @Volatile
-        private var INSTANCE:TravelDatabase? = null
-        fun getDatabase(context: Context):TravelDatabase {
-            return INSTANCE?: synchronized(this) {
-                val instance = Room.databaseBuilder(context.applicationContext,
-                    TravelDatabase::class.java,
-                    "travel_database").fallbackToDestructiveMigration().build()
-                INSTANCE = instance
-                instance
-            }
-        }
     }
 }

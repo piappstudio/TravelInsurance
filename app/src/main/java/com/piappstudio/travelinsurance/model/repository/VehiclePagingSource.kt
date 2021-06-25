@@ -17,8 +17,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.piappstudio.travelinsurance.model.dao.VehicleDao
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
+import javax.inject.Inject
 
-class VehiclePagingSource(private val repository: TravelRepository): PagingSource<Int, Vehicle>() {
+class VehiclePagingSource @Inject constructor (private val repository: TravelRepository): PagingSource<Int, Vehicle>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 0

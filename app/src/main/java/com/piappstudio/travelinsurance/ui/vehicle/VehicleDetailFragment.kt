@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter
 import androidx.annotation.WorkerThread
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -31,25 +32,24 @@ import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleDetailBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 import com.piappstudio.travelinsurance.model.mbo.json.Auto
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  * create an instance of this fragment.
  */
-
+@AndroidEntryPoint
 class VehicleDetailFragment : Fragment() {
 
     private var _binding:FragmentVehicleDetailBinding? = null
     private val binding get() = _binding!!
 
-    val viewModel:VehicleViewModel by lazy {
-        VehicleViewModel.getInstance()
-    }
-
+    @Inject lateinit var viewModel:VehicleViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

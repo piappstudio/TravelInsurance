@@ -27,10 +27,15 @@ import com.piappstudio.travelinsurance.model.mbo.VehicleError
 import com.piappstudio.travelinsurance.model.mbo.json.AutoInfo
 import com.piappstudio.travelinsurance.model.mbo.json.MakeInfo
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class VehicleViewModel(val repository: TravelRepository):ViewModel() {
+@ActivityScoped
+class VehicleViewModel @Inject constructor (val repository: TravelRepository):ViewModel() {
 
     var currVehicleInfo:MutableLiveData<Vehicle> = MutableLiveData()
     var autoInfo:List<AutoInfo>? = null
@@ -172,19 +177,6 @@ class VehicleViewModel(val repository: TravelRepository):ViewModel() {
             emit(Resource.Status.SUCCESS)
         } else {
             emit(Resource.Status.ERROR)
-        }
-
-    }
-
-    companion object {
-        @Volatile
-        private var INSTANCE:VehicleViewModel?= null
-        fun getInstance():VehicleViewModel {
-            return INSTANCE?: synchronized(this) {
-                val viewModel = VehicleViewModel(TIApplication.INSTANCE!!.repository)
-                INSTANCE = viewModel
-                viewModel
-            }
         }
 
     }

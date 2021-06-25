@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.piappstudio.pilibrary.ui.PIBaseActivity
@@ -13,16 +14,18 @@ import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentRegistrationBinding
 import com.piappstudio.pilibrary.utility.Resource
+import com.piappstudio.travelinsurance.model.repository.TravelRepository
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 /**
  * A simple [Fragment] subclass.
  */
+@AndroidEntryPoint
 class RegistrationFragment : Fragment() {
 
-    private val registerViewModel by lazy {
-        RegistrationViewModel(TIApplication.INSTANCE!!.repository)
-    }
+    private val registerViewModel:RegistrationViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)

@@ -26,13 +26,16 @@ import com.piappstudio.travelinsurance.common.OnItemClickListener
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleListBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 /**
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class VehicleListFragment : Fragment() {
 
     private var _binding:FragmentVehicleListBinding? = null
@@ -46,10 +49,7 @@ class VehicleListFragment : Fragment() {
         })
     }
 
-    private val viewModel by lazy {
-        VehicleViewModel.getInstance()
-    }
-
+    @Inject lateinit var viewModel:VehicleViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)

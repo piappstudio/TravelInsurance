@@ -1,19 +1,19 @@
 package com.piappstudio.travelinsurance
 
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.pilibrary.utility.dismissKeyboard
 import com.piappstudio.travelinsurance.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : PIBaseActivity() {
 
     private var binding:ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

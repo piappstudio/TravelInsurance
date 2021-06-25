@@ -17,7 +17,7 @@ object BinderUtil {
         if (error== R.string.empty) {
             textInputLayout.error = null
         } else {
-            textInputLayout.error = TIApplication.INSTANCE?.getString(error)
+            textInputLayout.error = textInputLayout.context.getString(error)
             textInputLayout.requestFocus()
         }
     }
