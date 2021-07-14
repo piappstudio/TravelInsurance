@@ -14,10 +14,7 @@
 package com.piappstudio.travelinsurance.model.mbo.json
 
 import android.content.Context
-import androidx.annotation.MainThread
-import androidx.annotation.WorkerThread
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import com.piappstudio.travelinsurance.common.readJsonFile
 
 class Auto() {
     companion object {
@@ -25,28 +22,7 @@ class Auto() {
         var autoInfo:List<AutoInfo>? = null
 
         fun readJsonFile(context: Context, fileName:String):String{
-
-            val returnString = StringBuilder()
-            var inStream:InputStreamReader? = null
-            var inputBuffer: BufferedReader? = null
-            try {
-                val stream = context.assets.open(fileName, Context.MODE_PRIVATE)
-                inStream = InputStreamReader(stream)
-                inputBuffer = BufferedReader(inStream)
-                do {
-                    val line = inputBuffer.readLine()
-                    if (line!=null) {
-                        returnString.append(line)
-                    }
-                } while (line!=null)
-            } catch (exception:Exception) {
-
-            }
-            finally {
-                inStream?.close()
-                inputBuffer?.close()
-            }
-            return returnString.toString()
+            return context.readJsonFile(fileName)
         }
     }
 

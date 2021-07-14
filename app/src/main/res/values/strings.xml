@@ -73,4 +73,5 @@
     <string name="msg_error_owner_status">Please select owner status</string>
     <string name="msg_error_kilo_meter">Please kilo kilometers</string>
     <string name="msg_error_yearly_millage">Please enter yearly millage</string>
+    <string name="not_available">Not Available</string>
 </resources>

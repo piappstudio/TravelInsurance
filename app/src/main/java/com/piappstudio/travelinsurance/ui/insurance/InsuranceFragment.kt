@@ -18,56 +18,94 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.piappstudio.travelinsurance.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.piappstudio.travelinsurance.common.readJsonFile
+import com.piappstudio.travelinsurance.model.mbo.InsuranceInfo
+import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
+import com.piappstudio.travelinsurance.ui.vehicle.VehicleViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InsuranceFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class InsuranceFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val insuranceViewModel: InsuranceViewModel by viewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUI()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insurance, container, false)
-    }
+        return ComposeView(requireContext()).apply {
+            setContent {
+                MaterialTheme {
+                    val insuranceInfo:InsuranceInfo by insuranceViewModel.lstInsuranceProvider.observeAsState(
+                        initial = InsuranceInfo()
+                    )
+                    insuranceInfo.insuranceInfo?.let {
+                        renderInsuranceList(lstInsurance = it)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InsuranceFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InsuranceFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    }
                 }
             }
+        }
+    }
+
+    fun initUI() {
+        lifecycleScope.launch (Dispatchers.IO) {
+            val jsonString = requireActivity().readJsonFile("insurance.json")
+            insuranceViewModel.parseJson(jsonString)
+        }
+    }
+
+    @Composable
+    fun renderInsuranceList(lstInsurance:List<InsuranceInfoItem>) {
+       LazyColumn() {
+           items(lstInsurance) { message ->
+               itemInsuranceRow(insuranceItem = message)
+           }
+       }
+    }
+
+    @Composable
+    fun itemInsuranceRow(insuranceItem:InsuranceInfoItem) {
+        val padding = 16.dp
+        val height = 10.dp
+        Box (Modifier.padding(padding)) {
+            Text(text = insuranceItem.supplierName ?: stringResource(R.string.not_available),
+            style = typography.caption)
+            Spacer(modifier = Modifier.height(height))
+            Row(Modifier.padding(padding)) {
+                Text(text = insuranceItem.irdaPackagePremium.toString(), fontStyle = FontStyle.Italic, style = typography.overline)
+                Text(text = insuranceItem.finalPremium.toString(), fontStyle = FontStyle.Italic, style = typography.body1)
+            }
+        }
     }
 }
