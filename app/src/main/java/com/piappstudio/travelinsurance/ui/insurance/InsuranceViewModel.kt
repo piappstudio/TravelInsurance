@@ -17,17 +17,28 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
-import com.piappstudio.travelinsurance.model.mbo.InsuranceInfo
+import com.google.gson.reflect.TypeToken
+import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
-@HiltViewModel
+@ActivityScoped
 class InsuranceViewModel @Inject constructor() : ViewModel() {
-    val _lstInsuranceProviders = MutableLiveData<InsuranceInfo>()
-    val lstInsuranceProvider: LiveData<InsuranceInfo> = _lstInsuranceProviders
+    private val _lstInsuranceProviders = MutableLiveData<List<InsuranceInfoItem>>()
+    val lstInsuranceProvider: LiveData<List<InsuranceInfoItem>> = _lstInsuranceProviders
 
+    private val _selectedInsuranceItem = MutableLiveData<InsuranceInfoItem>()
+    val selectedInsuranceInfo:LiveData<InsuranceInfoItem> = _selectedInsuranceItem
     fun parseJson(jsonString:String) {
-       val insuranceInfo =  Gson().fromJson(jsonString, InsuranceInfo::class.java)
+        val myType = object : TypeToken<List<InsuranceInfoItem>>() {}.type
+        val insuranceInfo =  Gson().fromJson<List<InsuranceInfoItem>>(jsonString, myType).distinctBy { it.supplierName }.sortedByDescending {
+            it.finalPremium
+        }
         _lstInsuranceProviders.postValue(insuranceInfo)
+    }
+
+    fun updateSelectedInsuranceInfo(insuranceInfo:InsuranceInfoItem) {
+        _selectedInsuranceItem.postValue(insuranceInfo)
     }
 }

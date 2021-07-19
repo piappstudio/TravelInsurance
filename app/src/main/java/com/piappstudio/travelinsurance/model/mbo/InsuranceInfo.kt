@@ -20,9 +20,6 @@ data class InsuranceInfoItem(
 	@field:SerializedName("CoverType")
 	val coverType: Int? = null,
 
-	@field:SerializedName("listPlanTextDetails")
-	val listPlanTextDetails: List<String?>? = null,
-
 	@field:SerializedName("EmergencyCoverPremium")
 	val emergencyCoverPremium: Double? = null,
 
@@ -49,12 +46,6 @@ data class InsuranceInfoItem(
 
 	@field:SerializedName("GroupID")
 	val groupID: Int? = null,
-
-	@field:SerializedName("Validations")
-	val validations: Validations? = null,
-
-	@field:SerializedName("AddOnFilters")
-	val addOnFilters: String? = null,
 
 	@field:SerializedName("IsCessApplicable")
 	val isCessApplicable: Boolean? = null,
@@ -127,9 +118,6 @@ data class InsuranceInfoItem(
 
 	@field:SerializedName("QuoteSource")
 	val quoteSource: Int? = null,
-
-	@field:SerializedName("FeatureIdList")
-	val featureIdList: List<FeatureIdListItem?>? = null,
 
 	@field:SerializedName("MaximumIdv")
 	val maximumIdv: Double? = null,
@@ -271,73 +259,8 @@ data class Breakup(
 	@field:SerializedName("TCPremium")
 	val tCPremium: Double? = null,
 
-	@field:SerializedName("IsLLTP")
-	val isLLTP: Int? = null,
-
-	@field:SerializedName("EngineProtectorPremium")
-	val engineProtectorPremium: Double? = null,
-
-	@field:SerializedName("AddOnFilters")
-	val addOnFilters: String? = null,
-
-	@field:SerializedName("Loading")
-	val loading: Double? = null,
-
-	@field:SerializedName("ServiceTax")
-	val serviceTax: Double? = null,
-
-	@field:SerializedName("NonElecAccessoriesPremium")
-	val nonElecAccessoriesPremium: Double? = null,
-
-	@field:SerializedName("LossOfPersonalBelongingPremium")
-	val lossOfPersonalBelongingPremium: Double? = null,
-
-	@field:SerializedName("MDPremium")
-	val mDPremium: Double? = null,
-
-	@field:SerializedName("NcbDiscount")
-	val ncbDiscount: Double? = null,
-
-	@field:SerializedName("PlanId")
-	val planId: Int? = null,
-
-	@field:SerializedName("IsCorPlan")
-	val isCorPlan: Boolean? = null,
-
-	@field:SerializedName("ElecAccessoriesPremium")
-	val elecAccessoriesPremium: Double? = null,
-
-	@field:SerializedName("PAPremium")
-	val pAPremium: Double? = null,
-
-	@field:SerializedName("ServiceTaxMultiplier")
-	val serviceTaxMultiplier: Double? = null,
-
-	@field:SerializedName("InsurerDiscount")
-	val insurerDiscount: Double? = null,
-
-	@field:SerializedName("InvoicePriceCoverPremium")
-	val invoicePriceCoverPremium: Double? = null,
-
-	@field:SerializedName("EmergencyTransportandHotelPremium")
-	val emergencyTransportandHotelPremium: Double? = null,
-
-	@field:SerializedName("ProposalNumber")
-	val proposalNumber: String? = null,
-
-	@field:SerializedName("NcbProtectorPremium")
-	val ncbProtectorPremium: Double? = null
 ) : Parcelable
 
-@Parcelize
-data class FeatureIdListItem(
-
-	@field:SerializedName("FeatureId")
-	val featureId: Int? = null,
-
-	@field:SerializedName("FeatureSufix")
-	val featureSufix: String? = null
-) : Parcelable
 
 @Parcelize
 data class Validations(

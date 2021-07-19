@@ -18,6 +18,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,7 +27,13 @@ fun Activity.dismissKeyboard() {
     if (inputMethodManager.isAcceptingText)
         inputMethodManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, /*flags:*/ 0)
 }
+fun Double.roundTo(n : Int) : Double {
+    return "%.${n}f".format(this).toDouble()
+}
 
+fun Double.addComma():String {
+    return NumberFormat.getInstance(Locale.getDefault()).format(this)
+}
 fun Date.toDisplayDateFormat(): String {
     val simpleDateFormat = SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault())
     return simpleDateFormat.format(this)
