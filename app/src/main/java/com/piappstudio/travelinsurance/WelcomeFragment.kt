@@ -11,13 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.piappstudio.pilibrary.ui.slider.IntroInfo
 import com.piappstudio.pilibrary.ui.slider.ScreenSlidePagerAdapter
-import kotlinx.android.synthetic.main.fragment_welcome.*
+import com.piappstudio.travelinsurance.databinding.FragmentWelcomeBinding
 
 /**
  * create an instance of this fragment.
  */
 class WelcomeFragment : Fragment() {
     val lstItem = mutableListOf<IntroInfo>()
+
+    var _binding: FragmentWelcomeBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initData()
@@ -50,17 +53,18 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+       _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val pagerAdapter = ScreenSlidePagerAdapter(this, lstItem)
-        vpIntro.adapter = pagerAdapter
-        TabLayoutMediator(into_tab_layout, vpIntro) { _, _ -> }.attach()
+        binding.vpIntro.adapter = pagerAdapter
+        TabLayoutMediator(binding.intoTabLayout, binding.vpIntro) { _, _ -> }.attach()
 
         val btnSignIn = view.findViewById<Button>(R.id.btnSignIn)
         btnSignIn.setOnClickListener {
@@ -69,5 +73,10 @@ class WelcomeFragment : Fragment() {
         view.findViewById<Button>(R.id.btnRegister).setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_registrationFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

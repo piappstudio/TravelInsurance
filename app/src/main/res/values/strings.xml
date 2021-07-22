@@ -73,4 +73,10 @@
     <string name="msg_error_owner_status">Please select owner status</string>
     <string name="msg_error_kilo_meter">Please kilo kilometers</string>
     <string name="msg_error_yearly_millage">Please enter yearly millage</string>
+    <string name="not_available">Not Available</string>
+    <string name="title_premium_amount">Premium Amount</string>
+    <string name="title_gst_18">GST @18%</string>
+    <string name="title_you_will_pay">You\'ll Pay</string>
+    <string name="btn_pay_securely">PAY SECURELY</string>
+    <string name="btn_search_policy">Search Policy</string>
 </resources>

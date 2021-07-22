@@ -110,7 +110,7 @@ class VehicleDetailFragment : Fragment() {
                         }
                         Resource.Status.SUCCESS -> {
                             activity?.dismissProgressDialog("Loading")
-                            findNavController().navigateUp()
+                            findNavController().navigate(R.id.action_vehicleDetailFragment_to_insuranceFragment)
                         }
                         else -> {
                             activity?.dismissProgressDialog("Loading")
