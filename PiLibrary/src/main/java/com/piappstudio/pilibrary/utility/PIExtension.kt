@@ -18,6 +18,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,7 +33,8 @@ fun Double.roundTo(n : Int) : Double {
 }
 
 fun Double.addComma():String {
-    return NumberFormat.getInstance(Locale.getDefault()).format(this)
+    val dec = DecimalFormat("#,###.00")
+    return dec.format(this)
 }
 fun Date.toDisplayDateFormat(): String {
     val simpleDateFormat = SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault())

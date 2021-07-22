@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.mock
+import com.piappstudio.travelinsurance.model.repository.TravelRepository
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -31,10 +32,11 @@ class LoginViewModelTest{
     private lateinit var viewModel: LoginViewModel
     private val errorUserName:Observer<Int> = mock()
     private val errorPassword:Observer<Int> = mock()
+    val repository:TravelRepository = mock()
 
     @Before
     fun before() {
-        viewModel = LoginViewModel(TIApplication.INSTANCE!!.repository)
+        viewModel = LoginViewModel(repository)
         viewModel.errorUser.observeForever(errorUserName)
         viewModel.errorPass.observeForever(errorPassword)
     }

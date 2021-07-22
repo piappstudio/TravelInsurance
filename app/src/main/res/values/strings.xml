@@ -78,4 +78,5 @@
     <string name="title_gst_18">GST @18%</string>
     <string name="title_you_will_pay">You\'ll Pay</string>
     <string name="btn_pay_securely">PAY SECURELY</string>
+    <string name="btn_search_policy">Search Policy</string>
 </resources>

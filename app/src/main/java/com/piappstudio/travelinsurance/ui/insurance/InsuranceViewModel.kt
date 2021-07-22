@@ -16,11 +16,15 @@ package com.piappstudio.travelinsurance.ui.insurance
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ActivityScoped
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityScoped
@@ -35,7 +39,10 @@ class InsuranceViewModel @Inject constructor() : ViewModel() {
         val insuranceInfo =  Gson().fromJson<List<InsuranceInfoItem>>(jsonString, myType).distinctBy { it.supplierName }.sortedByDescending {
             it.finalPremium
         }
-        _lstInsuranceProviders.postValue(insuranceInfo)
+        viewModelScope.launch {
+            _lstInsuranceProviders.postValue(insuranceInfo)
+
+        }
     }
 
     fun updateSelectedInsuranceInfo(insuranceInfo:InsuranceInfoItem) {

@@ -233,7 +233,7 @@
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tilVMillage"
-                    android:text="@{vehicleModel.mutIsUpdate?@string/btn_register:@string/btn_register_update}" />
+                    android:text="@string/btn_search_policy" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

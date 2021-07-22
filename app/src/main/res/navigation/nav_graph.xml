@@ -78,8 +78,7 @@
     <fragment
         android:id="@+id/insuranceFragment"
         android:name="com.piappstudio.travelinsurance.ui.insurance.InsuranceFragment"
-        android:label="Insurance Options"
-        tools:layout="@layout/fragment_insurance">
+        android:label="Insurance Options">
         <action
             android:id="@+id/action_insuranceFragment_to_insuranceDetailFragment"
             app:destination="@id/insuranceDetailFragment" />
@@ -101,8 +100,7 @@
     <fragment
         android:id="@+id/insuranceDetailFragment"
         android:name="com.piappstudio.travelinsurance.ui.insurance.InsuranceDetailFragment"
-        android:label="Your Plan Summary"
-        tools:layout="@layout/fragment_insurance_detail">
+        android:label="Your Plan Summary">
         <action
             android:id="@+id/action_insuranceDetailFragment_to_paymentOptionFragment"
             app:destination="@id/paymentOptionFragment" />

@@ -38,8 +38,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -48,9 +50,12 @@ import androidx.navigation.fragment.findNavController
 import com.piappstudio.pilibrary.utility.addComma
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.readJsonFile
+import com.piappstudio.travelinsurance.common.theme.Purple700
+import com.piappstudio.travelinsurance.common.theme.Teal200
 import com.piappstudio.travelinsurance.common.theme.TravelInsuranceTheme
 import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -92,7 +97,7 @@ class InsuranceFragment : Fragment() {
     }
 
     fun initUI() {
-        lifecycleScope.launch {
+        lifecycleScope.launch (Dispatchers.IO) {
             val jsonString = requireActivity().readJsonFile("insurance.json")
             insuranceViewModel.parseJson(jsonString)
         }
@@ -137,8 +142,13 @@ class InsuranceFragment : Fragment() {
                 Spacer(modifier = Modifier.height(height))
 
                 // To design the original and base price
-                Box(Modifier.padding(padding).fillMaxWidth()) {
-                    Column(Modifier.fillMaxWidth(.5f).align(Alignment.TopStart)) {
+                Box(
+                    Modifier
+                        .fillMaxWidth()) {
+                    Column(
+                        Modifier
+                            .fillMaxWidth(.5f)
+                            .align(Alignment.TopStart)) {
                         Text(
                             text = "Original Price",
                             style = typography.subtitle1
@@ -148,10 +158,15 @@ class InsuranceFragment : Fragment() {
                             text = insuranceItem.irdaPackagePremium?.addComma() ?: "",
                             textDecoration = TextDecoration.LineThrough,
                             fontStyle = FontStyle.Italic,
-                            style = typography.h5
+                            style = typography.h5,
+                            color = Color.Red,
+                            fontWeight = FontWeight.Light
                         )
                     }
-                    Column(Modifier.fillMaxWidth(.5f).align(Alignment.TopEnd)) {
+                    Column(
+                        Modifier
+                            .fillMaxWidth(.5f)
+                            .align(Alignment.TopEnd)) {
                         Text(
                             text = "Offer Price",
                             modifier = Modifier.fillMaxWidth() ,
@@ -164,13 +179,23 @@ class InsuranceFragment : Fragment() {
                             modifier = Modifier.fillMaxWidth(),
                             fontStyle = FontStyle.Italic,
                             style = typography.h5,
-                            textAlign = TextAlign.End
+                            color = Purple700,
+                            textAlign = TextAlign.End,
+                            fontWeight = FontWeight.Black
                         )
                     }
 
 
                 }
             }
+        }
+    }
+
+    @Preview
+    @Composable
+    fun previewitemInsuranceRow() {
+        itemInsuranceRow(InsuranceInfoItem(supplierName = "LIC of India", finalPremium = 21300.0, irdaPackagePremium = 25000.0)) {
+            
         }
     }
 

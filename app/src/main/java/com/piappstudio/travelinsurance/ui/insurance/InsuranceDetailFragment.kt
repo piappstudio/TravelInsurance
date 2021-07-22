@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,6 +39,7 @@ import com.piappstudio.pilibrary.utility.addComma
 import com.piappstudio.pilibrary.utility.roundTo
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.theme.TravelInsuranceTheme
+import com.piappstudio.travelinsurance.model.mbo.Breakup
 import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -76,7 +78,8 @@ class InsuranceDetailFragment : Fragment() {
             Card(
                 modifier = Modifier
                     .padding(horizontal = 8.dp, vertical = 8.dp)
-                    .fillMaxWidth().wrapContentHeight(align = Alignment.Top)
+                    .fillMaxWidth()
+                    .wrapContentHeight(align = Alignment.Top)
             ) {
                 Column(Modifier.padding(16.dp)) {
                     Text(text = infoItem.supplierName.toString(), style = typography.h4)
@@ -128,7 +131,8 @@ class InsuranceDetailFragment : Fragment() {
                     .fillMaxWidth(0.5f)
                     .align(Alignment.TopEnd),
                 textAlign = TextAlign.End,
-                style = typography.subtitle1
+                style = typography.h6,
+                fontWeight = FontWeight.Black
             )
         }
     }
@@ -137,5 +141,12 @@ class InsuranceDetailFragment : Fragment() {
     @Composable
     fun renderRowPreview() {
         renderRow(first = "Muruga", last = "Siva")
+    }
+
+    @Preview()
+    @Composable
+    fun previewItem() {
+        val insuranceInfoItem = InsuranceInfoItem(supplierName = "LIC", breakup = Breakup(finalPremium = 23404.0))
+        renderInsuranceItemDetail(infoItem = insuranceInfoItem)
     }
 }
