@@ -194,7 +194,7 @@ class InsuranceFragment : Fragment() {
     @Preview
     @Composable
     fun previewitemInsuranceRow() {
-        itemInsuranceRow(InsuranceInfoItem(supplierName = "LIC of India", finalPremium = 21300.0, irdaPackagePremium = 25000.0)) {
+        itemInsuranceRow(InsuranceInfoItem(supplierName = "LIC of In", finalPremium = 21300.0, irdaPackagePremium = 25000.0)) {
             
         }
     }

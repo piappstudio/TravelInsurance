@@ -146,7 +146,7 @@ class InsuranceDetailFragment : Fragment() {
     @Preview()
     @Composable
     fun previewItem() {
-        val insuranceInfoItem = InsuranceInfoItem(supplierName = "LIC", breakup = Breakup(finalPremium = 23404.0))
+        val insuranceInfoItem = InsuranceInfoItem(supplierName = "LIC Of India", breakup = Breakup(finalPremium = 23404.0))
         renderInsuranceItemDetail(infoItem = insuranceInfoItem)
     }
 }
