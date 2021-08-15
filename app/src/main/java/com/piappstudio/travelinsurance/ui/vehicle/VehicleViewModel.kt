@@ -13,29 +13,29 @@
 
 package com.piappstudio.travelinsurance.ui.vehicle
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.piappstudio.pilibrary.model.AutoInfo
+import com.piappstudio.pilibrary.model.MakeInfo
 import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.TIApplication
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
 import com.piappstudio.travelinsurance.model.mbo.VehicleError
-import com.piappstudio.travelinsurance.model.mbo.json.AutoInfo
-import com.piappstudio.travelinsurance.model.mbo.json.MakeInfo
 import com.piappstudio.travelinsurance.model.repository.TravelRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @ActivityScoped
-class VehicleViewModel @Inject constructor (val repository: TravelRepository):ViewModel() {
+class VehicleViewModel @Inject constructor (val repository: TravelRepository): ViewModel() {
 
     var currVehicleInfo:MutableLiveData<Vehicle> = MutableLiveData()
     var autoInfo:List<AutoInfo>? = null
@@ -44,7 +44,7 @@ class VehicleViewModel @Inject constructor (val repository: TravelRepository):Vi
 
     // For type
     private val _liveVehicleType:MutableLiveData<List<String>> = MutableLiveData()
-    val liveVehicleType:LiveData<List<String>> = _liveVehicleType
+    val liveVehicleType: LiveData<List<String>> = _liveVehicleType
 
     // For make
     private val _liveVehicleMake:MutableLiveData<List<String>> = MutableLiveData()

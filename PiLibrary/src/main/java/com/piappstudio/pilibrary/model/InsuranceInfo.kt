@@ -1,4 +1,4 @@
-package com.piappstudio.travelinsurance.model.mbo
+package  com.piappstudio.pilibrary.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

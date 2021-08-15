@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /*
   ~  * Copyright 2021 All rights are reserved by Pi App Studio
   ~  *
@@ -13,5 +12,6 @@
   -->
 
 <resources>
-    <string name="feature_description">Slider Image</string>
+    <dimen name="m_16">16dp</dimen>
+    <dimen name="m_10">10dp</dimen>
 </resources>

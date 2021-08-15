@@ -1,0 +1,958 @@
+{
+  "Car":  [
+    {
+      "code": "ACURA",
+      "value": "Acura",
+      "title": "Acura",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "ILX",
+          "value": "ILX",
+          "title": "ILX",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "ILX",
+          "value": "ILX w/Package",
+          "title": "ILX w/Package",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "MDX",
+          "value": "MDX",
+          "title": "MDX",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "MDX",
+          "value": "MDX Sport w/Package Hybrid",
+          "title": "MDX Sport w/Package Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "MDX",
+          "value": "MDX w/Package",
+          "title": "MDX w/Package",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "NSX",
+          "value": "NSX Hybrid",
+          "title": "NSX Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RDX",
+          "value": "RDX",
+          "title": "RDX",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RDX",
+          "value": "RDX w/Package",
+          "title": "RDX w/Package",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RLX",
+          "value": "RLX",
+          "title": "RLX",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RLX",
+          "value": "RLX Sport w/Package Hybrid",
+          "title": "RLX Sport w/Package Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RLX",
+          "value": "RLX w/Package",
+          "title": "RLX w/Package",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "TLX",
+          "value": "TLX",
+          "title": "TLX",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "TLX",
+          "value": "TLX w/Package",
+          "title": "TLX w/Package",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "A ROMEO",
+      "value": "Alfa Romeo",
+      "title": "Alfa Romeo",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "4C",
+          "value": "4C",
+          "title": "4C",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "GIULIA",
+          "value": "Giulia",
+          "title": "Giulia",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "STELVIO",
+          "value": "Stelvio",
+          "title": "Stelvio",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "STELVIO",
+          "value": "Stelvio Sport",
+          "title": "Stelvio Sport",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "A MARTIN",
+      "value": "Aston Martin",
+      "title": "Aston Martin",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "DB11",
+          "value": "DB11",
+          "title": "DB11",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "DBS",
+          "value": "DBS",
+          "title": "DBS",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RAPIDE",
+          "value": "Rapide",
+          "title": "Rapide",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "VANQUISH",
+          "value": "Vanquish",
+          "title": "Vanquish",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "VANTAGE",
+          "value": "Vantage",
+          "title": "Vantage",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "AUDI",
+      "value": "Audi",
+      "title": "Audi",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "A3",
+          "value": "A3",
+          "title": "A3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A3",
+          "value": "A3 Hybrid",
+          "title": "A3 Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A3",
+          "value": "A3 Premium",
+          "title": "A3 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A3",
+          "value": "A3 Premium Hybrid",
+          "title": "A3 Premium Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A3",
+          "value": "A3 Premium S-Line",
+          "title": "A3 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A3",
+          "value": "A3 S-Line",
+          "title": "A3 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A4",
+          "value": "A4",
+          "title": "A4",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A4",
+          "value": "A4 Premium",
+          "title": "A4 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A4",
+          "value": "A4 Premium S-Line",
+          "title": "A4 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A5",
+          "value": "A5",
+          "title": "A5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A5",
+          "value": "A5 Premium",
+          "title": "A5 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A5",
+          "value": "A5 Premium S-Line",
+          "title": "A5 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A5",
+          "value": "A5 S-Line",
+          "title": "A5 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A5",
+          "value": "A5 Sport",
+          "title": "A5 Sport",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A6",
+          "value": "A6",
+          "title": "A6",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A6",
+          "value": "A6 Premium",
+          "title": "A6 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A7",
+          "value": "A7",
+          "title": "A7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A7",
+          "value": "A7 Premium",
+          "title": "A7 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A7",
+          "value": "A7 Premium S-Line",
+          "title": "A7 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A7",
+          "value": "A7 S-Line",
+          "title": "A7 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A8",
+          "value": "A8",
+          "title": "A8",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "A8",
+          "value": "A8 Sport",
+          "title": "A8 Sport",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "ALLROAD",
+          "value": "Allroad",
+          "title": "Allroad",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "ALLROAD",
+          "value": "Allroad Premium",
+          "title": "Allroad Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "E-TRON",
+          "value": "E-TRON",
+          "title": "E-TRON",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "E-TRON",
+          "value": "E-TRON Premium",
+          "title": "E-TRON Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q3",
+          "value": "Q3",
+          "title": "Q3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q3",
+          "value": "Q3 Premium",
+          "title": "Q3 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q3",
+          "value": "Q3 Premium S-Line",
+          "title": "Q3 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q3",
+          "value": "Q3 S-Line",
+          "title": "Q3 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q5",
+          "value": "Q5",
+          "title": "Q5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q5",
+          "value": "Q5 Hybrid",
+          "title": "Q5 Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q5",
+          "value": "Q5 Premium",
+          "title": "Q5 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q5",
+          "value": "Q5 Premium S-Line",
+          "title": "Q5 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q5",
+          "value": "Q5 S-Line",
+          "title": "Q5 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q7",
+          "value": "Q7",
+          "title": "Q7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q7",
+          "value": "Q7 Premium",
+          "title": "Q7 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q7",
+          "value": "Q7 S-Line",
+          "title": "Q7 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q8",
+          "value": "Q8",
+          "title": "Q8",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q8",
+          "value": "Q8 Premium",
+          "title": "Q8 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q8",
+          "value": "Q8 Premium S-Line",
+          "title": "Q8 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Q8",
+          "value": "Q8 S-Line",
+          "title": "Q8 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "R8",
+          "value": "R8",
+          "title": "R8",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RS3",
+          "value": "RS3",
+          "title": "RS3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RS5",
+          "value": "RS5",
+          "title": "RS5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RS5",
+          "value": "RS5 Premium",
+          "title": "RS5 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "RS7",
+          "value": "RS7",
+          "title": "RS7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S3",
+          "value": "S3",
+          "title": "S3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S3",
+          "value": "S3 Premium",
+          "title": "S3 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S4",
+          "value": "S4",
+          "title": "S4",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S4",
+          "value": "S4 Premium",
+          "title": "S4 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S4",
+          "value": "S4 Premium S-Line",
+          "title": "S4 Premium S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S4",
+          "value": "S4 S-Line",
+          "title": "S4 S-Line",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S5",
+          "value": "S5",
+          "title": "S5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S5",
+          "value": "S5 Premium",
+          "title": "S5 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S6",
+          "value": "S6",
+          "title": "S6",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S6",
+          "value": "S6 Premium",
+          "title": "S6 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S7",
+          "value": "S7",
+          "title": "S7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S7",
+          "value": "S7 Premium",
+          "title": "S7 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "S8",
+          "value": "S8",
+          "title": "S8",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "SQ5",
+          "value": "SQ5",
+          "title": "SQ5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "SQ5",
+          "value": "SQ5 Premium",
+          "title": "SQ5 Premium",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "TT",
+          "value": "TT",
+          "title": "TT",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "TT",
+          "value": "TTS",
+          "title": "TTS",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "BENTLEY",
+      "value": "Bentley",
+      "title": "Bentley",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "BENTAYGA",
+          "value": "Bentayga",
+          "title": "Bentayga",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "MULSANNE",
+          "value": "Mulsanne",
+          "title": "Mulsanne",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "BMW",
+      "value": "BMW",
+      "title": "BMW",
+      "entityName": "VehicleMake",
+      "models": [
+        {
+          "code": "2 SERIES",
+          "value": "2 Series",
+          "title": "2 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "3 SERIES",
+          "value": "3 Series",
+          "title": "3 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "3 SERIES",
+          "value": "3 Series Hybrid",
+          "title": "3 Series Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "4 SERIES",
+          "value": "4 Series",
+          "title": "4 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "5 SERIES",
+          "value": "5 Series",
+          "title": "5 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "5 SERIES",
+          "value": "5 Series Hybrid",
+          "title": "5 Series Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "6 SERIES",
+          "value": "6 Series",
+          "title": "6 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "7 SERIES",
+          "value": "7 Series",
+          "title": "7 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "7 SERIES",
+          "value": "7 Series Hybrid",
+          "title": "7 Series Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "8 SERIES",
+          "value": "8 Series",
+          "title": "8 Series",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "I3",
+          "value": "I3",
+          "title": "I3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "I8",
+          "value": "I8 Hybrid",
+          "title": "I8 Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M2",
+          "value": "M2",
+          "title": "M2",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M3",
+          "value": "M3",
+          "title": "M3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M4",
+          "value": "M4",
+          "title": "M4",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M5",
+          "value": "M5",
+          "title": "M5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M6",
+          "value": "M6",
+          "title": "M6",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "M7",
+          "value": "M7",
+          "title": "M7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X1",
+          "value": "X1",
+          "title": "X1",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X2",
+          "value": "X2",
+          "title": "X2",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X3",
+          "value": "X3",
+          "title": "X3",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X4",
+          "value": "X4",
+          "title": "X4",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X5",
+          "value": "X5",
+          "title": "X5",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X5",
+          "value": "X5 Hybrid",
+          "title": "X5 Hybrid",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X5",
+          "value": "X5 M",
+          "title": "X5 M",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X6",
+          "value": "X6",
+          "title": "X6",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X6",
+          "value": "X6 M",
+          "title": "X6 M",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "X7",
+          "value": "X7",
+          "title": "X7",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        },
+        {
+          "code": "Z4",
+          "value": "Z4",
+          "title": "Z4",
+          "entityName": "VehicleModel",
+          "referenceId": ""
+        }
+      ]
+    },
+    {
+      "code": "BUICK",
+      "value": "Buick",
+      "title": "Buick",
+      "entityName": "VehicleMake",
+      "referenceId": ""
+    }
+  ],
+  "Two Wheeler": [
+    {
+      "code": "Bajaj",
+      "value": "Bajaj",
+      "title": "Bajaj",
+      "models": [
+        {
+          "title": "Apache"
+        },
+        {
+          "title": "Pulsur"
+        },
+        {
+          "title": "Avenger"
+        }
+      ]
+    },
+    {
+      "code": "Honda",
+      "title": "Honda",
+      "models": [
+        {
+          "title": "CBR"
+        },
+        {
+          "title": "500x"
+        }
+      ]
+    },
+    {
+      "code": "Yamaha",
+      "title": "Yamaha",
+      "models": [
+        {
+          "title": "FZ-FI"
+        },
+        {
+          "title": "YZF R15"
+        },
+        {
+          "title": "MT15"
+        }
+      ]
+    }
+  ],
+  "Commercial":  [
+    {
+      "code": "Ashok Leyland",
+      "title": "Ashok Leyland",
+      "models": [
+        {
+          "title": "Bada Dost"
+        },
+        {
+          "title": "Boss 1115 HB"
+        },
+        {
+          "title": "Tractor 5525"
+        },
+        {
+          "title": "10x2 Tipper 4220"
+        }
+      ]
+    },
+    {
+      "code": "Bajaj",
+      "title": "Bajaj",
+      "models": [
+        {
+          "title": "Bajaj RE"
+        },
+        {
+          "title": "Maxima Z"
+        },
+        {
+          "title": "QUTE"
+        }
+      ]
+    }
+  ]
+}

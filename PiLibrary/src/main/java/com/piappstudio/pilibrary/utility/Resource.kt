@@ -13,19 +13,19 @@
 
 package com.piappstudio.pilibrary.utility
 
-data class Resource<out T>(val status: Status, val data: T?, val message: String?){
+data class Resource<out T>(val status: Status, val data: T?, val error: PIError?){
 
     companion object {
         //Handles success
         fun <T> success(data: T): Resource<T> = Resource(
-            status = Status.SUCCESS, data = data, message = null)
+            status = Status.SUCCESS, data = data, error = null)
         //Handles Loading
-        fun <T> loading(data: T?): Resource<T> = Resource(
-            status = Status.LOADING, data = data, message = null)
+        fun <T> loading(data: T?=null): Resource<T> = Resource(
+            status = Status.LOADING, data = data, error = null)
         //Handles Error
-        fun <T> error(data: T?, message: String): Resource<T> = Resource(
-            status = Status.ERROR, data = data, message = message)
-        fun<T> idle(data:T?) = Resource (status = Status.NONE, data = data, message = null)
+        fun <T> error(data: T?=null, error: PIError?=null): Resource<T> = Resource(
+            status = Status.ERROR, data = data, error=null)
+        fun<T> idle(data:T?) = Resource (status = Status.NONE, data = data, error = null)
 
     }
     enum class Status {
@@ -35,3 +35,5 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
         LOADING
     }
 }
+
+data class PIError(val code:Int = -1,  val message:String?=null)
