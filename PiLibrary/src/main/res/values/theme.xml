@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /*
   ~  * Copyright 2021 All rights are reserved by Pi App Studio
   ~  *
@@ -13,5 +12,13 @@
   -->
 
 <resources>
-    <string name="feature_description">Slider Image</string>
+
+    <style name="h1">
+        <item name="android:textSize">30sp</item>
+        <item name="fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="PD_Description">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>

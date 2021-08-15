@@ -24,11 +24,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.piappstudio.pilibrary.R
-import kotlinx.android.synthetic.main.fragment_intro_view.*
+import com.piappstudio.pilibrary.databinding.FragmentIntroViewBinding
 
 private const val INTRO_INFO = "INTRO_INFO"
 
@@ -37,7 +36,7 @@ private const val INTRO_INFO = "INTRO_INFO"
  */
 class IntroViewFragment : Fragment() {
     private var introInfo: IntroInfo? = null
-
+    private var _binding:FragmentIntroViewBinding?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -48,15 +47,16 @@ class IntroViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentIntroViewBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_intro_view, container, false)
+        return _binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         introInfo?.image?.let {
-            view?.findViewById<ImageView>(R.id.ivIntro)?.setImageResource(it)
-            ivIntro.contentDescription = introInfo?.title
+            _binding?.ivIntro?.setImageResource(it)
+            _binding?.ivIntro?.contentDescription = introInfo?.title
         }
         this.view?.findViewById<TextView>(R.id.tvTitle)?.text = introInfo?.title
         this.view?.findViewById<TextView>(R.id.tvDateInterval)?.text = introInfo?.description

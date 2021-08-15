@@ -26,12 +26,10 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,19 +42,14 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.piappstudio.pilibrary.model.InsuranceInfoItem
+import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.pilibrary.utility.addComma
 import com.piappstudio.travelinsurance.R
-import com.piappstudio.travelinsurance.common.readJsonFile
 import com.piappstudio.travelinsurance.common.theme.Purple700
-import com.piappstudio.travelinsurance.common.theme.Teal200
 import com.piappstudio.travelinsurance.common.theme.TravelInsuranceTheme
-import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -68,13 +61,9 @@ class InsuranceFragment : Fragment() {
 
     private val TAG = InsuranceFragment::class.java.name
 
+
     @Inject
     lateinit var insuranceViewModel: InsuranceViewModel
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initUI()
-    }
 
     @ExperimentalMaterialApi
     override fun onCreateView(
@@ -86,25 +75,44 @@ class InsuranceFragment : Fragment() {
             setContent {
 
                 TravelInsuranceTheme {
-                    val lstInsurance: List<InsuranceInfoItem> by insuranceViewModel.lstInsuranceProvider.observeAsState(
-                        initial = emptyList()
-                    )
-                    renderInsuranceList(lstInsurance = lstInsurance)
+
+                    val state = insuranceViewModel.lstInsuranace.collectAsState()
+                    when (state.value.status) {
+                        Resource.Status.LOADING -> {
+                            RenderMessage(message = context.getString(R.string.loading))
+                        }
+                        Resource.Status.SUCCESS -> {
+
+                            val lst = state.value.data?.distinctBy { it.supplierName }?.sortedBy { it.finalPremium }
+                            if (lst!=null) {
+                                RenderInsuranceList(lstInsurance = lst)
+                            } else {
+                                RenderMessage(message =context.getString(R.string.empty_insurance))
+                            }
+
+                        }
+                        Resource.Status.ERROR-> {
+                            RenderMessage(message = context.getString(R.string.server_error))
+                        }
+                    }
                 }
 
             }
         }
     }
 
-    fun initUI() {
-        lifecycleScope.launch (Dispatchers.IO) {
-            val jsonString = requireActivity().readJsonFile("insurance.json")
-            insuranceViewModel.parseJson(jsonString)
+
+    @Composable
+    private fun RenderMessage(message:String) {
+        Box(modifier = Modifier
+            .padding(8.dp)
+            .fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text( text = message, Modifier.padding(16.dp),   style = typography.h4, textAlign = TextAlign.Center)
         }
     }
 
     @Composable
-    fun renderInsuranceList(lstInsurance: List<InsuranceInfoItem>) {
+    fun RenderInsuranceList(lstInsurance: List<InsuranceInfoItem>) {
         LazyColumn(
             Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
@@ -193,10 +201,15 @@ class InsuranceFragment : Fragment() {
 
     @Preview
     @Composable
-    fun previewitemInsuranceRow() {
+    fun PreviewitemInsuranceRow() {
         itemInsuranceRow(InsuranceInfoItem(supplierName = "LIC of In", finalPremium = 21300.0, irdaPackagePremium = 25000.0)) {
-            
         }
+    }
+    
+    @Preview
+    @Composable
+    fun PreviewMessage() {
+        RenderMessage(message = "Loading..")
     }
 
 }

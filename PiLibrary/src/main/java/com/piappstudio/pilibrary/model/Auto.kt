@@ -11,22 +11,22 @@
  *
  */
 
-package com.piappstudio.travelinsurance.model.mbo.json
+package com.piappstudio.pilibrary.model
 
 import android.content.Context
-import com.piappstudio.travelinsurance.common.readJsonFile
+import com.piappstudio.pilibrary.common.readJsonFile
 
-class Auto() {
+class Auto(val autoInfo: List<AutoInfo>?) {
     companion object {
 
         var autoInfo:List<AutoInfo>? = null
 
         fun readJsonFile(context: Context, fileName:String):String{
-            return context.readJsonFile(fileName)
+            return context.readJsonFile(fileName, true)
         }
     }
-
 }
+
 
 data class AutoInfo(val name:String, val makes:List<MakeInfo>)
 data class MakeInfo(val code:String?, val value:String?, val title:String?, val models:List<MakeInfo>)

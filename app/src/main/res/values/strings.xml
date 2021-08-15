@@ -8,7 +8,6 @@
     <string name="title_welcome">Travel Insurance</string>
     <string name="offer_car_title">Car Insurance</string>
     <string name="offer_car_desc">Insurance up to 60% off</string>
-    <string name="feature_description">Slider Image</string>
     <string name="offer_bike_title">Motorcycle Insurance</string>
     <string name="offer_bike_desc">10% Hot Offer!</string>
     <string name="msg_username">Enter Username/Email Address</string>
@@ -79,4 +78,7 @@
     <string name="title_you_will_pay">You\'ll Pay</string>
     <string name="btn_pay_securely">PAY SECURELY</string>
     <string name="btn_search_policy">Search Policy</string>
+    <string name="loading">Loading...</string>
+    <string name="empty_insurance">No insurance are available</string>
+    <string name="server_error">Server Error! Please try again later.</string>
 </resources>

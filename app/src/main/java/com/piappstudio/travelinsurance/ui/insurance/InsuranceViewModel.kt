@@ -19,29 +19,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.piappstudio.pilibrary.model.InsuranceInfoItem
+import com.piappstudio.pilibrary.network.PiDataRepository
+import com.piappstudio.pilibrary.utility.Resource
 import dagger.hilt.android.scopes.ActivityScoped
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityScoped
-class InsuranceViewModel @Inject constructor() : ViewModel() {
-    private val _lstInsuranceProviders = MutableLiveData<List<InsuranceInfoItem>>()
-    val lstInsuranceProvider: LiveData<List<InsuranceInfoItem>> = _lstInsuranceProviders
+class InsuranceViewModel @Inject constructor(apiRepository:PiDataRepository) : ViewModel() {
+
+    private val _lstInsurance = MutableStateFlow<Resource<List<InsuranceInfoItem>?>>(Resource.idle(null))
+    val lstInsuranace = _lstInsurance
 
     private val _selectedInsuranceItem = MutableLiveData<InsuranceInfoItem>()
     val selectedInsuranceInfo:LiveData<InsuranceInfoItem> = _selectedInsuranceItem
-    fun parseJson(jsonString:String) {
-        val myType = object : TypeToken<List<InsuranceInfoItem>>() {}.type
-        val insuranceInfo =  Gson().fromJson<List<InsuranceInfoItem>>(jsonString, myType).distinctBy { it.supplierName }.sortedByDescending {
-            it.finalPremium
-        }
-        viewModelScope.launch {
-            _lstInsuranceProviders.postValue(insuranceInfo)
 
+    init {
+        viewModelScope.launch {
+            apiRepository.fetchInsurances().collect {
+                _lstInsurance.value = it
+            }
         }
     }
 

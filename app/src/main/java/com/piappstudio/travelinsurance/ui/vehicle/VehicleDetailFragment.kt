@@ -18,20 +18,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.annotation.WorkerThread
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.piappstudio.pilibrary.common.readJsonFile
+import com.piappstudio.pilibrary.model.Auto
 import com.piappstudio.pilibrary.ui.PIBaseActivity
 import com.piappstudio.pilibrary.utility.Resource
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.databinding.FragmentVehicleDetailBinding
 import com.piappstudio.travelinsurance.model.mbo.Vehicle
-import com.piappstudio.travelinsurance.model.mbo.json.Auto
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -74,16 +73,16 @@ class VehicleDetailFragment : Fragment() {
             viewModel.currVehicleInfo = MutableLiveData(Vehicle())
         }
         // Set the adapter when values gets changes
-        viewModel.liveVehicleType.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            binding.actVType.setAdapter(ArrayAdapter<String>(requireContext(), R.layout.list_popup_window_item, it))
+        viewModel.liveVehicleType.observe(viewLifecycleOwner, {
+            binding.actVType.setAdapter(ArrayAdapter(requireContext(), R.layout.list_popup_window_item, it))
         })
 
-        viewModel.liveVehicleMake.observe(viewLifecycleOwner, androidx.lifecycle.Observer{
-            binding.actVMake.setAdapter(ArrayAdapter<String>(requireContext(), R.layout.list_popup_window_item, it))
+        viewModel.liveVehicleMake.observe(viewLifecycleOwner, {
+            binding.actVMake.setAdapter(ArrayAdapter(requireContext(), R.layout.list_popup_window_item, it))
         })
 
-        viewModel.liveVehicleModel.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-           binding.actModel.setAdapter(ArrayAdapter<String>(requireContext(), R.layout.list_popup_window_item, it))
+        viewModel.liveVehicleModel.observe(viewLifecycleOwner, {
+           binding.actModel.setAdapter(ArrayAdapter(requireContext(), R.layout.list_popup_window_item, it))
         })
 
         binding.actVType.doOnTextChanged { text, _, _, _ ->
@@ -122,7 +121,7 @@ class VehicleDetailFragment : Fragment() {
         }
         lifecycleScope.launch(Dispatchers.IO) {
             if (Auto.autoInfo == null) {
-                val jsonString = Auto.readJsonFile(requireContext(), "vehicle.json")
+                val jsonString = requireContext().readJsonFile("vehicle.json", true)
                 Auto.autoInfo = viewModel.parseAutoJson(jsonString)
             }
             Auto.autoInfo?.let {

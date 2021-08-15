@@ -35,12 +35,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.piappstudio.pilibrary.model.Breakup
+import com.piappstudio.pilibrary.model.InsuranceInfoItem
 import com.piappstudio.pilibrary.utility.addComma
 import com.piappstudio.pilibrary.utility.roundTo
 import com.piappstudio.travelinsurance.R
 import com.piappstudio.travelinsurance.common.theme.TravelInsuranceTheme
-import com.piappstudio.travelinsurance.model.mbo.Breakup
-import com.piappstudio.travelinsurance.model.mbo.InsuranceInfoItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -64,16 +64,15 @@ class InsuranceDetailFragment : Fragment() {
                     val insuranceInfoItem: InsuranceInfoItem by insuranceViewModel.selectedInsuranceInfo.observeAsState(
                         initial = InsuranceInfoItem()
                     )
-                    renderInsuranceItemDetail(infoItem = insuranceInfoItem)
+                    RenderInsuranceItemDetail(infoItem = insuranceInfoItem)
                 }
             }
         }
     }
 
     @Composable
-    fun renderInsuranceItemDetail(infoItem: InsuranceInfoItem) {
+    fun RenderInsuranceItemDetail(infoItem: InsuranceInfoItem) {
 
-        val padding = 8.dp
         Surface {
             Card(
                 modifier = Modifier
@@ -84,21 +83,21 @@ class InsuranceDetailFragment : Fragment() {
                 Column(Modifier.padding(16.dp)) {
                     Text(text = infoItem.supplierName.toString(), style = typography.h4)
                     Spacer(modifier = Modifier.height(16.dp))
-                    renderRow(
+                    RenderRow(
                         first = stringResource(R.string.title_premium_amount),
                         last = infoItem.breakup?.finalPremium?.roundTo(2)?.addComma() ?: ""
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    renderRow(
+                    RenderRow(
                         first = stringResource(R.string.title_gst_18),
                         last = infoItem.breakup?.finalPremium?.times(0.18)?.roundTo(2)?.addComma()
                             ?: ""
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    renderRow(
+                    RenderRow(
                         first = stringResource(R.string.title_you_will_pay),
                         last = infoItem.breakup?.finalPremium?.times(0.18)
-                            ?.plus(infoItem.breakup.finalPremium)?.roundTo(2)?.addComma() ?: ""
+                            ?.plus(infoItem.breakup!!.finalPremium!!)?.roundTo(2)?.addComma() ?: ""
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     ExtendedFloatingActionButton(
@@ -115,7 +114,7 @@ class InsuranceDetailFragment : Fragment() {
     }
 
     @Composable
-    fun renderRow(first: String, last: String) {
+    fun RenderRow(first: String, last: String) {
         Box(Modifier.fillMaxWidth()) {
             Text(
                 text = first,
@@ -139,14 +138,14 @@ class InsuranceDetailFragment : Fragment() {
 
     @Preview
     @Composable
-    fun renderRowPreview() {
-        renderRow(first = "Muruga", last = "Siva")
+    fun RenderRowPreview() {
+        RenderRow(first = "Muruga", last = "Siva")
     }
 
     @Preview()
     @Composable
-    fun previewItem() {
+    fun PreviewItem() {
         val insuranceInfoItem = InsuranceInfoItem(supplierName = "LIC Of India", breakup = Breakup(finalPremium = 23404.0))
-        renderInsuranceItemDetail(infoItem = insuranceInfoItem)
+        RenderInsuranceItemDetail(infoItem = insuranceInfoItem)
     }
 }
