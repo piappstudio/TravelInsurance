@@ -14,9 +14,10 @@
 package com.piappstudio.pilibrary.network
 
 import com.piappstudio.pilibrary.model.InsuranceInfoItem
+import com.piappstudio.pilibrary.utility.Resource
 
 const val FILE_INSURANCE = "insurance.json"
 // Custom interface, that holds all the operations
 interface IPiDataSource {
-    suspend fun fetchInsurances(): List<InsuranceInfoItem>?
+    suspend fun fetchInsurances(): Resource<List<InsuranceInfoItem>?>
 }

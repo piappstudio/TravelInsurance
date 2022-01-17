@@ -24,7 +24,7 @@ data class Resource<out T>(val status: Status, val data: T?, val error: PIError?
             status = Status.LOADING, data = data, error = null)
         //Handles Error
         fun <T> error(data: T?=null, error: PIError?=null): Resource<T> = Resource(
-            status = Status.ERROR, data = data, error=null)
+            status = Status.ERROR, data = data, error=error)
         fun<T> idle(data:T?) = Resource (status = Status.NONE, data = data, error = null)
 
     }

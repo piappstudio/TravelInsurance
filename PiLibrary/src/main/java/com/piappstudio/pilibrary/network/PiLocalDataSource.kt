@@ -18,6 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.piappstudio.pilibrary.common.readJsonFile
 import com.piappstudio.pilibrary.model.InsuranceInfoItem
+import com.piappstudio.pilibrary.utility.Resource
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -26,11 +27,12 @@ import javax.inject.Inject
 
 /**To read response from cache folder*/
 class PiLocalDataSource @Inject constructor(@ApplicationContext val context:Context): IPiDataSource {
-    override suspend fun fetchInsurances():List<InsuranceInfoItem>? {
+    override suspend fun fetchInsurances(): Resource<List<InsuranceInfoItem>?> {
         return withContext(Dispatchers.IO) {
             val json = context.readJsonFile(FILE_INSURANCE)
             val myType = object : TypeToken<List<InsuranceInfoItem>>() {}.type
-            Gson().fromJson<List<InsuranceInfoItem>>(json, myType)
+            val result = Gson().fromJson<List<InsuranceInfoItem>>(json, myType)
+            Resource.success(result)
         }
     }
 }
