@@ -37,16 +37,15 @@ class PiDataRepository @Inject constructor (@ApplicationContext val context: Con
         emit(Resource.loading())
         if (context.isNetworkAvailable() && !context.isFileExist(FILE_INSURANCE)) {
             val response = networkRepo.fetchInsurances()
-            response?.let {
-                context.saveFileOnCache(Gson().toJson(it), FILE_INSURANCE)
-                emit(Resource.success(response))
-            }
-            if (response == null) {
-                emit(Resource.error())
+            if (response.data != null) {
+                context.saveFileOnCache(Gson().toJson(response.data), FILE_INSURANCE)
+                emit(Resource.success(response.data))
+            }else {
+                emit(response)
             }
         } else {
             val response = localRepo.fetchInsurances()
-            emit(Resource.success(response))
+            emit(Resource.success(response.data))
         }
     }
 }

@@ -28,6 +28,8 @@ buildscript {
 ext {
     paging_version = "3.0.0-beta02"
     $coroutine_version = "1.5.0"
+    mockk_version = "1.12.2"
+    okhttp_mock_server = "4.9.3"
 
 }
 

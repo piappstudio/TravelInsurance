@@ -14,6 +14,8 @@
 package com.piappstudio.pilibrary.network
 
 import com.piappstudio.pilibrary.model.InsuranceInfoItem
+import com.piappstudio.pilibrary.utility.PIError
+import com.piappstudio.pilibrary.utility.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -21,13 +23,13 @@ import javax.inject.Inject
 
 // Class that helps you to fetch the data from server (network)
 class PiRemoteDataSource @Inject constructor(val IPiRetrofitApi: IPiRetrofitApi):IPiDataSource {
-    override suspend fun fetchInsurances():List<InsuranceInfoItem>? {
+    override suspend fun fetchInsurances():Resource<List<InsuranceInfoItem>?> {
         return withContext(Dispatchers.IO) {
              val response = IPiRetrofitApi.fetchInsurances()
             if (response.isSuccessful) {
-                response.body()
+               Resource.success(response.body())
             } else {
-                null
+                Resource.error(null, error = PIError(response.code()))
             }
         }
     }
